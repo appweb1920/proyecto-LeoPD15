@@ -20,6 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/loginLU', function(){
     return view('login');
+});
+
+Route::get('/registro', function(){
+    return view('registro');
 });
