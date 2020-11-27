@@ -1,0 +1,30 @@
+@extends('layouts.principal')
+
+@section('content')
+<div class="container" >
+    <h2 class="center-align">Inicio de sesión</h2>
+    <div class="row ">
+        <form action="" class="col s12" >
+            <div class="row">
+                <div class="input-field col s6 offset-s3" style=" margin-top:40px;">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" name="nombre" placeholder="Aqui va el texto" id="nombre">
+                    <label for="nombre">Nombre de usuario</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 offset-s3" style="margin-top:40px;">
+                    <i class="material-icons prefix">lock</i>
+                    <input type="password" name="password" placeholder="Aqui va la contraseña" id="password">
+                    <label for="password">Contraseña</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s2 offset-s5" style="text-align: center;">
+                    <input type="submit" name="" id="" value="Entrar" class="btn waves-effect"></input>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
