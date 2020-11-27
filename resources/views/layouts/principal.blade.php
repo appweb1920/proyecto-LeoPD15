@@ -49,19 +49,24 @@
             </li>
         </ul>
 
-
         <nav>
             <div class="nav-wrapper">
             <a href="#" class="brand-logo"><img src="logo.jpg" alt="#" style="width:140px; height: auto;"></a>
             @guest
                 <ul id="nav-mobile" class="right hide-on-med-and-down"> <!--Pegado a la derecha-->            
-                    <li><a href="#!" data-target="dropdown1">Registro</a></li>
+                    <li><a href="/loginLU" data-target="dropdown1">Log In</a></li>
                 </ul>
+                
             @else
+                
+                <ul id="nav-mobile" class="right hide-on-med-and-down"> <!--Pegado a la derecha-->            
+                    <li><a href="/registro" data-target="dropdown1">Registro</a></li>
+                </ul>
                 <ul id="nav-mobile" class="right hide-on-med-and-down"> <!--Pegado a la derecha-->            
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Usuario
                     <i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul> 
+
             @endguest
             </div>
         </nav>

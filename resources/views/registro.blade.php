@@ -10,28 +10,25 @@
                 @csrf
                 <div class="row">
                     <div class="input-field col s6 offset-s3" style=" margin-top:20px;">
-                        
-                        <input type="text" name="correo" placeholder="Aqui va el texto" id="correo">
-                        <label for="correo">Correo</label>
+                        <input type="text" name="correo"  id="correo">
+                        <label for="correo">Correo electrónico</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6 offset-s3" style=" margin-top:20px;">
-                        
-                        <input type="text" name="nombre" placeholder="Aqui va el texto" id="nombre">
+                        <input type="text" name="nombre"  id="nombre">
                         <label for="nombre">Nombre de usuario</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6 offset-s3" style="margin-top:20px;">
-                        
-                        <input type="password" name="password" placeholder="Aqui va la contraseña" id="password">
+                        <input type="password" name="password" id="password">
                         <label for="password">Contraseña</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6 offset-s3" style="margin-top:20px;">
-                        <input type="text" name="tipo" id="tipo">
+                        <input type="text" name="tipo" id="tipo" >
                         <label for="tipo">Tipo de usuario</label>
                     </div>
                 </div>
