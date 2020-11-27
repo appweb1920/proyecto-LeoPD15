@@ -41,8 +41,15 @@
 <body>
     <div>
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">Salir</a></li>
+            <li>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Salir
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+            </li>
         </ul>
+
+
         <nav>
             <div class="nav-wrapper">
             <a href="#" class="brand-logo"><img src="logo.jpg" alt="#" style="width:140px; height: auto;"></a>

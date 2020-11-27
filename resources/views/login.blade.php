@@ -5,6 +5,7 @@
     <h2 class="center-align">Inicio de sesión</h2>
     <div class="row ">
         <form action="" class="col s12" >
+        @csrf
             <div class="row">
                 <div class="input-field col s6 offset-s3" style=" margin-top:40px;">
                     <i class="material-icons prefix">account_circle</i>
