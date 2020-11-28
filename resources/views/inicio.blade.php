@@ -29,12 +29,21 @@
                 <p class="center-align"><a href="">Equipamiento</a></p>
             </div>
         </div>
-
     </div>
-
-    <div class="col s11" style="border: thin red solid;">
+    <div class="col s10 offset-s1" style="border: thin red solid;">
         <div class="row">
+            <div class="col s12">
+                @if(isset($uniformes))
 
+                @else
+                
+                    <h2 class="center-align">No se encontraron uniformes</h2>
+                    @if(Auth::user() != null)
+                    <h2 class="center-align"><a href="">Registrar uniforme</a></h2>
+                    @endif  
+
+                @endif
+            </div>
         </div>
     </div>
 

@@ -32,3 +32,7 @@ Route::get('/registro', function(){
 Route::get('/inicio', function(){
     return view('inicio');
 });
+
+Route::get('/registroUniforme', function(){
+    return view('registroUniforme');
+});
