@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -25,14 +25,15 @@ Route::get('/loginLU', function(){
     return view('login');
 });
 
-Route::get('/registro', function(){
-    return view('registro');
-});
+Route::get('/usuarios', 'UsuariosController@index');
 
-Route::get('/inicio', function(){
+Route::get('/inicio', function(){   
     return view('inicio');
 });
 
 Route::get('/registroUniforme', function(){
     return view('registroUniforme');
 });
+
+Route::post('/registroUsuario', 'UsuariosController@store');
+Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');

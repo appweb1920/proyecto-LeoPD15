@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Usuarios;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsuariosController extends Controller
 {
@@ -14,7 +15,8 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::all();
+        return view('/registro')->with("usuarios", $usuarios);
     }
 
     /**
@@ -35,7 +37,21 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        // dd($user->rol);
+        if(Auth::user()->rol == 'administrador'){
+            if(!is_null($request)){
+                $usuario = new User;
+                $usuario->name = $request->name;
+                $usuario->email = $request->email;
+                $usuario->password = $request->password;
+                $usuario->rol = $request->rol;
+                $usuario->save;
+            }    
+        }
+        return redirect('/inicio');
+
     }
 
     /**
@@ -78,8 +94,15 @@ class UsuariosController extends Controller
      * @param  \App\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuarios $usuarios)
+    public function destroy($id)
     {
-        //
+        if(Auth::user()->rol == 'administrador'){
+            $user = User::find($id);
+            $user->delete();
+            return redirect('/usuarios');
+        }else{
+            return redirect('/inicio');
+        }
+        
     }
 }

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Document</title>
+    
+    <title>Los Uniformes</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Scripts -->
@@ -49,34 +49,26 @@
 </head>
 <body>
     <div>
-        <ul id="dropdown1" class="dropdown-content">
-            <li>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            Salir
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
-            </li>
-        </ul>
-
         <nav>
             <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src="logo.jpg" alt="#" style="width:140px; height: auto;"></a>
+            <a href="/inicio" class="brand-logo"><img src="logo.jpg" alt="#" style="width:140px; height: auto;"></a>
             @guest
                 <ul id="nav-mobile" class="right hide-on-med-and-down"> <!--Pegado a la derecha-->            
                     <li><a href="/loginLU" data-target="dropdown1">Log In</a></li>
                 </ul>
             @else
-                @if(Auth::user()->rol == 'Administrador')
                 <ul id="nav-mobile" class="right hide-on-med-and-down"> <!--Pegado a la derecha-->            
-                    <li><a href="/registro" data-target="dropdown1">Registro</a></li>
-                </ul>
-                @endif
-                
-                <ul id="nav-mobile" class="right hide-on-med-and-down"> <!--Pegado a la derecha-->            
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{Auth::user()->name}}
-                    <i class="material-icons right">arrow_drop_down</i></a></li>
+                    @if(Auth::user()->rol == 'administrador')    
+                    <li><a href="/usuarios" data-target="dropdown1">Administrar Usuarios</a></li>
+                    @endif
+                    <li><a href="#" >{{Auth::user()->name}}
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color:#D92534;">
+                        Salir
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                    </li>   
                 </ul> 
-
             @endguest
             </div>
         </nav>
