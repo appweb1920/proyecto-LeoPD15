@@ -28,3 +28,7 @@ Route::get('/loginLU', function(){
 Route::get('/registro', function(){
     return view('registro');
 });
+
+Route::get('/inicio', function(){
+    return view('inicio');
+});
