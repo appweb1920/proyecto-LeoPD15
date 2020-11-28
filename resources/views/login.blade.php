@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="input-field col s6 offset-s3" style=" margin-top:40px;">
                     <i class="material-icons prefix">account_circle</i>
-                    <input type="text" name="nombre" placeholder="Aqui va el texto" id="nombre">
-                    <label for="nombre">Nombre de usuario</label>
+                    <input type="text" name="name" placeholder="Aqui va el texto" id="name">
+                    <label for="name">Nombre de usuario</label>
                 </div>
             </div>
             <div class="row">
