@@ -36,7 +36,6 @@
                 @if(isset($uniformes))
 
                 @else
-                
                     <h2 class="center-align">No se encontraron uniformes</h2>
                     @if(Auth::user() != null)
                     <h2 class="center-align"><a href="">Registrar uniforme</a></h2>
