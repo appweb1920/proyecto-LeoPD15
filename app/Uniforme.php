@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 class Uniforme extends Model
 {
 
+    protected $table = 'Uniforme';
+    protected $primaryKey = 'idUniforme';
+    
 
     public function getUniformesGrado(string $grado)
     {

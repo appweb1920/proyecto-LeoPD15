@@ -14,8 +14,15 @@ class CreateUniforme extends Migration
     public function up()
     {
         Schema::create('uniforme', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('idUniforme');
+            $table->unsignedBigInteger('idEscuela');
+            $table->integer('cantidad');
+            $table->float('costo');
+            $table->string('tipo');
+            $table->string('talla');
+            $table->softDeletes();
             $table->timestamps();
+            $table->foreign('idEscuela')->references('idEscuela')->on('Escuela')->onDelete('cascade');
         });
     }
 
