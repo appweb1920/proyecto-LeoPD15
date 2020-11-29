@@ -17,7 +17,7 @@
                 <p class="center-align"><a href="">Primaria</a></p>
             </div>
         </div>
-
+        
         <div class="row">
             <div class="col s12">
                 <p class="center-align"><a href="">Secundaria</a></p>
