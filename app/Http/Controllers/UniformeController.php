@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Uniforme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UniformeController extends Controller
 {
@@ -24,7 +25,10 @@ class UniformeController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::user()->rol == 'administrador' || Auth::user()->rol == 'privilegio'){
+            return view('registraUniforme');
+        }
+        return back();
     }
 
     /**

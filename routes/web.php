@@ -39,3 +39,4 @@ Route::get('/registroUniforme', function(){
 
 Route::post('/registroUsuario', 'UsuariosController@store');
 Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');
+Route::get('/registroUniforme', 'UniformeController@create');

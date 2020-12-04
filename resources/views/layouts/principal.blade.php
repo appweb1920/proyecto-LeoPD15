@@ -11,14 +11,16 @@
     <!-- Scripts -->
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/2145993086.js" crossorigin="anonymous"></script>
-    <!--JQUERY-->
+    <!--JQUERY
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript">
+    <script>
         $(document).ready(function(){
-            $(".dropdown-trigger").dropdown();
+            $('select').formSelect();
         })
     </script>
     <!--Import Google Icon Font-->
