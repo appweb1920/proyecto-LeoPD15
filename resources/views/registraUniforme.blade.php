@@ -10,15 +10,15 @@
             <form action="">
                 @csrf
                 <div class="row">
-                    <div class="input-field col s12">
-                        <select name="escuela" id="escuela">
-                            <option value="1">Matel</option>
-                            <option value="2">Zarco</option>
-                            <option value="3">3</option>
-                            <option value="4">2</option>
-                        </select>
-                        <label for="escuela">Escuela</label>
-                    </div>
+                <div class="input-field col s12">
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1" selected>Escuela 1</option>
+                        <option value="2">Escuela 2</option>
+                        <option value="3">Escuela 3</option>
+                    </select>
+                    <label>Escuela</label>
+                </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s8">
