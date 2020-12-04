@@ -17,27 +17,19 @@
                             @foreach($usuarios as $u)
                                 <div class="row">
                                 <script type="text/javascript">
-                                    function confirmar(){
-                                        var txt;
-                                        var r = confirm("Seguro que deseas borrar?");
-                                        if(r == true){
-                                            txt = "Sale pues";
-                                        }else{
-                                            txt = "tons no";
-                                        }
-                                        document.getElementById("demo").innerHTML = txt;
+                                    function Revisa(){
+                                        return(confirm("Deseas eliminar al usuario?"));
                                     }
                                 </script>
                                     <ul class="collection">
                                         <li class="collection-item">Nombre : {{$u->name}}
-                                        <a href="/usuarios/elimina/{{$u->id}}" style="color:#D92534;" class="secondary-content" onclick="confirmar()"> 
+                                        <a href="/usuarios/elimina/{{$u->id}}" style="color:#D92534;" class="secondary-content" id="EliminarLink" onclick="return Revisa()"> 
                                         Eliminar
                                         </a>
                                         </li>
                                         <li class="collection-item">Rol: {{$u->rol}}</li>
                                     </ul>
                                 </div>
-                                <p id="demo"></p>
                             @endforeach
                         @endif
                     </div>

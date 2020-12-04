@@ -10,10 +10,10 @@
             <form action="">
                 @csrf
                 <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col s8">
                     <select>
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1" selected>Escuela 1</option>
+                        <option value="" disabled selected>Elige la escuela</option>
+                        <option value="1">Escuela 1</option>
                         <option value="2">Escuela 2</option>
                         <option value="3">Escuela 3</option>
                     </select>
@@ -42,6 +42,12 @@
                     <div class="input-field col s8">
                         <input type="number" name="costo" id="costo">
                         <label for="costo">Costo</label>
+                    </div>
+                </div>
+                <div class="row">                    
+                    <div class="input-field col s8">
+                        <h6>Foto</h6>
+                        <input type="file" id="foto" name="foto">
                     </div>
                 </div>
             </form>
