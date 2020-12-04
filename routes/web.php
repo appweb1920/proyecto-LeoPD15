@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::redirect('/', 'loginLU');
 
 Route::get('/loginLU', function(){
     return view('login');

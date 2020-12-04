@@ -9,14 +9,14 @@
             <div class="row">
                 <div class="input-field col s6 offset-s3" style=" margin-top:40px;">
                     <i class="material-icons prefix">account_circle</i>
-                    <input type="text" name="name" placeholder="Aqui va el texto" id="name">
+                    <input type="text" name="name" id="name">
                     <label for="name">Nombre de usuario</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6 offset-s3" style="margin-top:40px;">
                     <i class="material-icons prefix">lock</i>
-                    <input type="password" name="password" placeholder="Aqui va la contraseña" id="password">
+                    <input type="password" name="password"  id="password">
                     <label for="password">Contraseña</label>
                 </div>
             </div>
@@ -27,5 +27,6 @@
             </div>
         </form>
     </div>
+    <br><br><br><br><br>
 </div>
 @endsection

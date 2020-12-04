@@ -15,17 +15,17 @@ class CreateUniforme extends Migration
     {
         Schema::create('uniforme', function (Blueprint $table) {
             $table->bigIncrements('idUniforme');
-            $table->unsignedBigInteger('idEscuela');
+            $table->unsignedBigInteger('idEscuelaUniforme');
+            $table->string('Foto');
             $table->integer('cantidad');
             $table->float('costo');
             $table->string('tipo');
             $table->string('talla');
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('idEscuela')->references('idEscuela')->on('Escuela')->onDelete('cascade');
+            $table->foreign('idEscuelaUniforme')->references('idEscuela')->on('Escuela')->onDelete('cascade');
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -33,6 +33,9 @@ class CreateUniforme extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uniforme');
+        Schema::table('uniforme', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
+    
 }
