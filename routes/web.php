@@ -36,4 +36,6 @@ Route::get('/inicio', function(){
 Route::post('/registroUsuario', 'UsuariosController@store');
 Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');
 Route::get('/registro/Uniforme', 'UniformeController@create');
-Route::get('/Escuela', 'EscuelaController@create');
+Route::get('/Escuelas', 'EscuelaController@create');
+Route::get('/Escuelas/elimina/{id}', 'EscuelaController@destroy');
+Route::get('/Cotizar', function(){return view('cotizar');});

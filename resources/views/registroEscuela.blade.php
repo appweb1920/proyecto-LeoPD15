@@ -14,7 +14,7 @@
                                 <div class="row">
                                     <ul class="collection">
                                         <li class="collection-item">Nombre: {{$e->nombre}}</li>
-                                        <a href="/usuarios/elimina/{{$e->id}}" style="color:#D92534;" class="secondary-content" id="EliminarUniforme" onclick="return Revisa()"> 
+                                        <a href="/Escuelas/elimina/{{$e->id}}" style="color:#D92534;" class="secondary-content" id="EliminarUniforme" onclick="return Revisa()"> 
                                         Eliminar
                                         </a>
                                         <li class="collection-item">Grado: {{$e->grado}}</li>

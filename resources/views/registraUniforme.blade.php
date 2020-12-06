@@ -5,6 +5,7 @@
 <div class="container">
     <div class="row">
         <h1 class="center-align">Registro de uniforme</h1>
+        <h3 class="center-align"><a href="/Escuelas">Escuelas</a></h3>
         <br><br><br>
         <div class="col s10 offset-s2">
             <form action="">
@@ -45,9 +46,17 @@
                     </div>
                 </div>
                 <div class="row">                    
-                    <div class="input-field col s8">
-                        <h6>Foto</h6>
-                        <input type="file" id="foto" name="foto">
+                    <div class="input-field col s8" >
+                    <h6>Foto</h6>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Archivo</span>
+                                <input type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
