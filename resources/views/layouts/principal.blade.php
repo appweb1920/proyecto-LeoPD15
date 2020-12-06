@@ -24,6 +24,9 @@
         $(document).ready(function(){
             $('select').formSelect();
         });
+        function Revisa(){
+            return(confirm("Deseas eliminar al usuario?"));
+        }
     </script>
     
     <style>

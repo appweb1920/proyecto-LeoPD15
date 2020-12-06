@@ -36,4 +36,4 @@ Route::get('/inicio', function(){
 Route::post('/registroUsuario', 'UsuariosController@store');
 Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');
 Route::get('/registro/Uniforme', 'UniformeController@create');
-Route::get('/registro/Escuela', 'EscuelaController@create');
+Route::get('/Escuela', 'EscuelaController@create');

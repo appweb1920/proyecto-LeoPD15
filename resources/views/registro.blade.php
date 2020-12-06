@@ -16,11 +16,6 @@
                         @if(isset($usuarios))
                             @foreach($usuarios as $u)
                                 <div class="row">
-                                <script type="text/javascript">
-                                    function Revisa(){
-                                        return(confirm("Deseas eliminar al usuario?"));
-                                    }
-                                </script>
                                     <ul class="collection">
                                         <li class="collection-item">Nombre : {{$u->name}}
                                         <a href="/usuarios/elimina/{{$u->id}}" style="color:#D92534;" class="secondary-content" id="EliminarLink" onclick="return Revisa()"> 

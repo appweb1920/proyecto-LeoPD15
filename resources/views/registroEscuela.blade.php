@@ -1,11 +1,33 @@
 @extends('layouts.principal')
 
 @section('content')
-<div class="row">
+<br><br>
+<div class="row" >
     <div class="col s12"> <!--Contenedor de todo-->
         <div class="row"> <!--Contenedor escuelas y registro de escuelas-->
             <div class="col s3">
                 <h2>Escuelas</h2>
+                <div class="row">
+                    <div class="col s12">
+                        @if(isset($escuelas))
+                            @foreach($escuelas as $e)
+                                <div class="row">
+                                    <ul class="collection">
+                                        <li class="collection-item">Nombre: {{$e->nombre}}</li>
+                                        <a href="/usuarios/elimina/{{$e->id}}" style="color:#D92534;" class="secondary-content" id="EliminarUniforme" onclick="return Revisa()"> 
+                                        Eliminar
+                                        </a>
+                                        <li class="collection-item">Grado: {{$e->grado}}</li>
+                                        <li class="collection-item">Turno: {{$e->turno}}</li>
+
+                                    </ul>
+                                </div>
+                            @endforeach
+                        @else
+                            <p>No hay escuelas</p>
+                        @endif()
+                    </div>
+                </div>
             </div>
             <div class="col s8">
                 <div class="row">   
@@ -22,7 +44,6 @@
                             <div class="row">
                                 <div class="input-field col s8">
                                     <select name="grado" id="grado">
-                                        <option value="" disabled selected>Eligir el grado</option>
                                         <option value="kinder">Kinder</option>
                                         <option value="primaria">Primaria</option>
                                         <option value="secundaria">Secundaria</option>
