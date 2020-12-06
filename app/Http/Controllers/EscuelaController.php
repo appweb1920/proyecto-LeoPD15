@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Escuela;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EscuelaController extends Controller
 {
@@ -24,7 +25,13 @@ class EscuelaController extends Controller
      */
     public function create()
     {
-        //
+        if(!Auth::user()){
+            return redirect('inicio');
+        }else if(Auth::user()->rol == "administrador"){
+            //$escuelas = Escuela::all();
+            //return view("registroEscuela")->with("escuelas", $escuelas);
+            return view("registroEscuela");
+        }
     }
 
     /**

@@ -87,6 +87,7 @@
         @yield('content')
 
     </div>
+    <br><br><br><br><br>
     <footer class="page-footer" style="background-color: #D92534;">
           <div class="container">
             <div class="row">

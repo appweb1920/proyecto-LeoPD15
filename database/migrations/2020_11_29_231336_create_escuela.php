@@ -12,6 +12,7 @@ class CreateEscuela extends Migration
             $table->bigIncrements('idEscuela');
             $table->string('nombre');
             $table->string('grado');
+            $table->string('turno');
             $table->softDeletes();
             $table->timestamps();
         });

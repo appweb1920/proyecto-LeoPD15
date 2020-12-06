@@ -25,10 +25,8 @@ class UniformeController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->rol == 'administrador' || Auth::user()->rol == 'privilegio'){
-            return view('registraUniforme');
-        }
-        return back();
+        if(!Auth::user()){return redirect('/inicio');}
+        elseif(Auth::user()->rol == 'administrador' || Auth::user()->rol == 'privilegio'){return view('registraUniforme');}
     }
 
     /**

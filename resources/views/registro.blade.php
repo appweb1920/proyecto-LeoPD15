@@ -12,7 +12,7 @@
             <div class="col s3" >
                 <h2>Usuarios</h2>
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12"> 
                         @if(isset($usuarios))
                             @foreach($usuarios as $u)
                                 <div class="row">

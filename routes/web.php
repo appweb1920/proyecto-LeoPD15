@@ -33,10 +33,7 @@ Route::get('/inicio', function(){
     return view('inicio');
 });
 
-Route::get('/registroUniforme', function(){
-    return view('registroUniforme');
-});
-
 Route::post('/registroUsuario', 'UsuariosController@store');
 Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');
-Route::get('/registroUniforme', 'UniformeController@create');
+Route::get('/registro/Uniforme', 'UniformeController@create');
+Route::get('/registro/Escuela', 'EscuelaController@create');
