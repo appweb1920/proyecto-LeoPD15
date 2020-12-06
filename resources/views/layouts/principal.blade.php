@@ -22,7 +22,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $('select').formSelect();
+            $('select').formSelect();$('.fixed-action-btn').floatingActionButton();
         });
         function Revisa(){
             return(confirm("Deseas eliminar al usuario?"));
@@ -45,6 +45,9 @@
         .btn{
             background-color: #D92534;
             margin-top:40px;
+        }
+        .btn-floating{
+            background-color: #D92534;
         }
         .btn:hover{
             background-color: #48B7CA;

@@ -12,7 +12,7 @@
 
         <div class="row">
             <div class="col s12">
-                <a href="" class="waves-effect waves-light btn">Cotizar</a>
+                <a href="/Cotizar" class="waves-effect waves-light btn">Cotizar</a>
             </div>
         </div>
         
