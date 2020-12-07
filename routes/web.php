@@ -27,15 +27,22 @@ Route::get('/loginLU', function(){
     return view('login');
 });
 
-Route::get('/usuarios', 'UsuariosController@index');
+
 
 Route::get('/inicio', function(){   
     return view('inicio');
 });
 
-Route::post('/registroUsuario', 'UsuariosController@store');
+//Rutas GET
+Route::get('/usuarios', 'UsuariosController@index');
 Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');
+Route::get('/Escuelas/elimina/{id}', 'EscuelaController@destroy');
+
 Route::get('/registro/Uniforme', 'UniformeController@create');
 Route::get('/Escuelas', 'EscuelaController@create');
-Route::get('/Escuelas/elimina/{id}', 'EscuelaController@destroy');
+
 Route::get('/Cotizar', function(){return view('cotizar');});
+//Rutas POST
+Route::post('/registroUsuario', 'UsuariosController@store');
+Route::post('/registro/Uniforme/Guardar', 'UniformeController@store');
+Route::post('/Escuelas/Guardar', 'EscuelaController@store');

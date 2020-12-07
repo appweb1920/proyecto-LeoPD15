@@ -24,8 +24,10 @@ class CreateUsersTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+        DB::table('users')->insert(
+            ['name'=>'administrador', 'email'=>'leo.p.d1500@gmail.com','password'=>'12345678', 'rol'=>'administrador']
+        );
     }
-
     /**
      * Reverse the migrations.
      *

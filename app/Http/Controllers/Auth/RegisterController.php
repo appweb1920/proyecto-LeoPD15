@@ -27,17 +27,7 @@ class RegisterController extends Controller
 
     protected $redirectTo;
 
-    /*public function __construct()
-    {
-        $this->middleware('guest');
-    }*/
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {   
         
@@ -48,12 +38,7 @@ class RegisterController extends Controller
             'rol' => ['required', 'string', 'max:255'],
         ]);
     }
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+
     protected function create(array $data)
     {
         
@@ -64,12 +49,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
                 'rol' => $data['rol'],
             ]);
-            // $usuario = new User;
-            // $usuario->name = $data['name'];
-            // $usuario->email = $data['email'];
-            // $usuario->password = Hash::make($data['password']);
-            // $usuario->rol = $data['rol'];
-            // $usuario->save;
+
         }
         return Auth::user();
         

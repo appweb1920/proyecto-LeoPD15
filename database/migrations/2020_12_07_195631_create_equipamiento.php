@@ -13,8 +13,13 @@ class CreateEquipamiento extends Migration
      */
     public function up()
     {
-        Schema::create('equipamiento', function (Blueprint $table) {
-            $table->id();
+        Schema::create('uniforme', function (Blueprint $table) {
+            $table->bigIncrements('idEquipamiento');
+            $table->string('nombre');
+            $table->string('foto')->default('logo.jpg');
+            $table->float('precio');
+            $table->string('talla')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

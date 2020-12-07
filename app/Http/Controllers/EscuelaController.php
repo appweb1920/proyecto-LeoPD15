@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Escuela;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class EscuelaController extends Controller
 {
@@ -42,7 +43,20 @@ class EscuelaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nombre'=> 'required',
+            'turno' => 'required',
+            'grado' => 'required'
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors(['incompleto'=>'Todos los campos son requeridos!'])->withInput();
+        }
+
+        $escuela = new Escuela();
+        $escuela->nombre = $request->nombre;
+        $escuela->grado = $request->grado;
+        $escuela->turno = $request->turno;
+        return redirect('/Escuelas');
     }
 
     /**

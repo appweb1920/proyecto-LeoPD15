@@ -16,7 +16,7 @@ class CreateUniforme extends Migration
         Schema::create('uniforme', function (Blueprint $table) {
             $table->bigIncrements('idUniforme');
             $table->unsignedBigInteger('idEscuelaUniforme');
-            $table->string('Foto');
+            $table->string('foto')->default('logo.jpg');
             $table->integer('cantidad');
             $table->float('costo');
             $table->string('tipo');
@@ -25,6 +25,7 @@ class CreateUniforme extends Migration
             $table->timestamps();
             $table->foreign('idEscuelaUniforme')->references('idEscuela')->on('Escuela');
         });
+        
     }
     /**
      * Reverse the migrations.

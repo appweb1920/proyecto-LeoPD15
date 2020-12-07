@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="row">
+@if(!is_null(Auth::user()))
     <div class="col s2" >
-        
         <div class="row">
             <div class="col s12">
                 <a href="" class="waves-effect waves-light btn">Venta</a>
@@ -21,13 +21,15 @@
                 <a href="/registro/Uniforme" class="waves-effect waves-light btn">R-Uniforme</a>
             </div>
         </div>
-
+        @if(Auth::user()->rol == "administrador")
         <div class="row">
             <div class="col s12">
-                <a href="/Escuela" class="waves-effect waves-light btn">Escuela</a>
+                <a href="/Escuelas" class="waves-effect waves-light btn">Escuela</a>
             </div>
         </div>
+        @endif
     </div>
+@endif
     <div class="col s9 " style="border: thin red solid;">
         <div class="row">
             <div class="col s12">

@@ -33,11 +33,11 @@
                 <div class="row">   
                     <h2 class="center-align">Registro de Escuela</h2>
                     <div class="col s8 offset-s3">
-                        <form action="">
+                        <form action="/Escuelas/Guardar" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="input-field col s8">
-                                    <input type="text" name="nombre" id="nombre">
+                                    <input type="text" name="nombre" id="nombre" value="{{old('nombre')}}">
                                     <label for="nombre">Nombre de la escuela</label>
                                 </div>
                             </div>
@@ -61,12 +61,16 @@
                                     <label for="turno">Turno (Matutino/Vespertino)</label>
                                 </div>
                             </div>
+                            @error('incompleto')
+                                <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
+                            @enderror
                             <div class="row">
                                 <div class="input-field col s8">
                                     <button type="submit" class="btn waves-effect">Registrar</button>
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>
