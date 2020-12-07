@@ -23,7 +23,7 @@ class CreateUniforme extends Migration
             $table->string('talla');
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('idEscuelaUniforme')->references('idEscuela')->on('Escuela')->onDelete('cascade');
+            $table->foreign('idEscuelaUniforme')->references('idEscuela')->on('Escuela');
         });
     }
     /**

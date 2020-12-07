@@ -2,18 +2,20 @@
 
 @section("content")
 <br><br>
-<div class="container">
+<div >
     <div class="row">
         <div class="col s12">
             <h2 class="center-align">Cotización</h2>
+            <p class="center-align"><b>Nota, agregar con el botón + los productos que se deseen antes de darle al botón</b></p>  
         </div>
     </div>
     <div class="row">
-        <div class="col s10 offset-s2">
+        <div class="col s7 offset-s1">
             <div class="row">
                 <div class="col s12">
                 <div class="ProductosContenedor">
                 <div class="Productos">
+                    <br>
                     <form action="" class="formProducto">
                         <div class="row">
                             <div class="col s8">
@@ -42,7 +44,7 @@
                     </form>
                     </div>
                     </div>
-                    <a class = "btn" onclick="calcula()">Cotizar</a>
+                    
                     <script type="text/javascript">
                         function calcula(){
                             var iva = 0;
@@ -70,12 +72,39 @@
                     </script>
                 </div>
             </div>
+            <div class="row">
+            <a class="btn-floating btn-large waves-effect waves-light" onclick="agregaProducto()"><i class="material-icons">add</i></a>
+            </div>
+            
         </div>
+        <!--Aquí podría ir col s2 con todos los datos de la coti-->
         
+        <div class="col s4">
+            <div class="row">
+                <div class="col s9">
+                    <form action="">
+                        <div class="col s4">
+                            <input type="text" name="subtotal" id="subtotal" value="0">
+                            <label for="subtotal">Subtotal</label>
+                        </div>
+                        <div class="col s4">
+                            <input type="text" name="iva" id="iva" value="0">
+                            <label for="iva">IVA 16%</label>
+                        </div>
+                        <div class="col s4">
+                            <input type="text" name="total" id="total" value="0">
+                            <label for="total">Total</label>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+            <div class="row"><a class = "btn" onclick="calcula()">Cotizar</a></div>
+        </div>
     </div>
-    <a class="btn-floating btn-large waves-effect waves-light right" onclick="agregaProducto()"><i class="material-icons">add</i></a>
-    <div class="row">
+    
+    <!--<div class="row">
         <div class="col s10 offset-s2">
+        
             <div class="row">
                 <div class="col s9">
                     <form action="">
@@ -96,6 +125,7 @@
             </div>
         </div>
     </div>
+    -->
 </div>
 <br>
 <br>
