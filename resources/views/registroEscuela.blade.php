@@ -25,7 +25,7 @@
                             @endforeach
                         @else
                             <p>No hay escuelas</p>
-                        @endif()
+                        @endif
                     </div>
                 </div>
             </div>
@@ -39,8 +39,12 @@
                                 <div class="input-field col s8">
                                     <input type="text" name="nombre" id="nombre" value="{{old('nombre')}}">
                                     <label for="nombre">Nombre de la escuela</label>
-                                </div>
+                                    @error('nombre')
+                                    <span style="background-color:#E57373;color:white"><b>{{ $message }}</b></span>
+                                    @enderror
+                                </div>    
                             </div>
+                            
                             <div class="row">
                                 <div class="input-field col s8">
                                     <select name="grado" id="grado">
@@ -61,9 +65,6 @@
                                     <label for="turno">Turno (Matutino/Vespertino)</label>
                                 </div>
                             </div>
-                            @error('incompleto')
-                                <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
-                            @enderror
                             <div class="row">
                                 <div class="input-field col s8">
                                     <button type="submit" class="btn waves-effect">Registrar</button>

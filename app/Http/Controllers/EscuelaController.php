@@ -43,13 +43,18 @@ class EscuelaController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            "nombre.max" => "El nombre de la escuela no puede pasar de 20 carácteres!",
+            'required'=>'Éste campo es requerido!'
+        ];
+
         $validator = Validator::make($request->all(), [
-            'nombre'=> 'required',
+            'nombre'=> 'required|max:20',
             'turno' => 'required',
             'grado' => 'required'
-        ]);
+        ], $messages);
         if($validator->fails()){
-            return redirect()->back()->withErrors(['incompleto'=>'Todos los campos son requeridos!'])->withInput();
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $escuela = new Escuela();

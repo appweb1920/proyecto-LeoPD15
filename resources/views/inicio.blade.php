@@ -9,13 +9,13 @@
                 <a href="" class="waves-effect waves-light btn">Venta</a>
             </div>
         </div>
-
+        @if(Auth::user()->rol == "administrador" || Auth::user()->rol == "privilegio")
         <div class="row">
             <div class="col s12">
                 <a href="/Cotizar" class="waves-effect waves-light btn">Cotizar</a>
             </div>
         </div>
-        
+        @endif
         <div class="row">
             <div class="col s12">
                 <a href="/registro/Uniforme" class="waves-effect waves-light btn">R-Uniforme</a>
