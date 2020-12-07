@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Escuela extends Model
 {
 
-    protected $table = 'Escuela';
+    protected $table = 'escuela';
     protected $fillable = ['nombre', 'grado'];
     protected $primaryKey = 'idEscuela';
 

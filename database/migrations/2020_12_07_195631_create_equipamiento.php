@@ -31,6 +31,8 @@ class CreateEquipamiento extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipamiento');
+        Schema::table('equipamiento', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

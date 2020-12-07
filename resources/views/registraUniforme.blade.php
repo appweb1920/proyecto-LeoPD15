@@ -20,7 +20,11 @@
                         </select>
                         <label>Escuela</label>
                     </div>
+                    @error('escuela')
+                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
+                    @enderror
                 </div>
+                
                 <div class="row">
                     <div class="input-field col s8">
                         <select name="genero" id="genero">
@@ -29,24 +33,39 @@
                         </select>
                         <label for="genero">Género</label>
                     </div>
-                </div>                    
+                    @error('genero')
+                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
+                    @enderror       
+                </div>
+                             
                 <div class="row">
                     <div class="input-field col s8">
-                        <input type="number" name="talla" id="talla" value="{{old('talla')}}">
+                        <input type="number" name="talla" id="talla" value="{{old('talla')}}" min="4" max="40">
                         <label for="talla">Talla</label>
                     </div>
+                    @error('talla')
+                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
+                    @enderror
                 </div>
+                
                 <div class="row">
                     <div class="input-field col s8">
-                        <input type="number" name="cantidad" id="cantidad" value="{{old('cantidad')}}">
+                        <input type="number" name="cantidad" id="cantidad" value="{{old('cantidad')}}" min="0">
                         <label for="cantidad">Cantidad</label>
                     </div>
+                    @error('cantidad')
+                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
+                    @enderror
                 </div>
+                
                 <div class="row">                    
                     <div class="input-field col s8">
-                        <input type="number" name="precio" id="precio" value="{{old('precio')}}">
+                        <input type="number" name="precio" id="precio" value="{{old('precio')}}" min="0">
                         <label for="precio">Precio</label>
                     </div>
+                    @error('precio')
+                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
+                    @enderror
                 </div>
                 <div class="row">                    
                     <div class="input-field col s8" >
@@ -54,13 +73,16 @@
                         <div class="file-field input-field">
                             <div class="btn">
                                 <span>Archivo</span>
-                                <input type="file">
+                                <input type="file" name="foto" id="foto">
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text">
                             </div>
                         </div>
                     </div>
+                    @error('foto')
+                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
+                    @enderror
                 </div>
                 <div class="row">
                     <div class="input-field col s8">

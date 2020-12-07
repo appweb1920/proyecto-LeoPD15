@@ -5,39 +5,45 @@ namespace App\Http\Controllers;
 use App\Uniforme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Escuela;
 
 class UniformeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         if(!Auth::user()){return redirect('/inicio');}
-        elseif(Auth::user()->rol == 'administrador' || Auth::user()->rol == 'privilegio'){return view('registraUniforme');}
+        elseif(Auth::user()->rol == 'administrador' || Auth::user()->rol == 'privilegio'){
+            $escuelas = Escuela::all();
+            return view('registraUniforme')->with('escuelas', $escuelas);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            "required" => "Este campo es requerido!",
+            "min" => "No puede haber cantidades negativas"
+        ];
+        $validator = Validator::make($request->all(),[
+            'escuela' => "required",
+            'genero' => "required",
+            'talla' => "required",
+            'cantidad' => "required|min:0",
+            'precio' => "required|min:0",
+        ], $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+
     }
 
     /**

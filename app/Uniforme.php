@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Uniforme extends Model
 {
 
-    protected $table = 'Uniforme';
+    protected $table = 'uniforme';
     protected $primaryKey = 'idUniforme';
     
 
