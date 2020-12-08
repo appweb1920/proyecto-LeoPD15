@@ -57,7 +57,7 @@ class UniformeController extends Controller
             $uniforme->foto = $uniforme->idUniforme . "." . $extension;
         }
         $uniforme->save();
-        return redirect('/inicio');
+        return redirect('/uniforme/tallas/' . $uniforme->idUniforme);
     }
 
     /**

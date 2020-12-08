@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Talla;
+use App\Uniforme;
+use App\Escuela;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TallaController extends Controller
 {
@@ -14,17 +18,12 @@ class TallaController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,29 +34,35 @@ class TallaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tallaUniforme = new Talla();
+        $tallaUniforme->idTallaUniforme = $request->idTallaUniforme;
+        $tallaUniforme->talla = $request->talla;
+        $tallaUniforme->cantidad = $request->cantidad;
+        $tallaUniforme->precio = $request->precio;
+        $tallaUniforme->save();
+        return redirect()->back();
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Talla  $talla
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Talla $talla)
+    public function show($id)
     {
-        //
+        if(Auth::user()){
+            
+            $uniforme = Uniforme::find($id);
+            $escuela = Escuela::find($uniforme->idEscuelaUniforme);
+            $tallas = DB::select(
+                'SELECT * FROM Talla
+                INNER JOIN Uniforme
+                ON Talla.idTallaUniforme = Uniforme.idUniforme
+                WHERE Talla.idTallaUniforme =' . $id
+            );
+            return view('registraTalla')->with('uniforme', $uniforme)->with('escuela', $escuela)->with('tallas', $tallas);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Talla  $talla
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Talla $talla)
     {
-        //
+        
     }
 
     /**
