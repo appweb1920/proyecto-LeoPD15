@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUsersTable extends Migration
 {
@@ -24,9 +25,12 @@ class CreateUsersTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-        DB::table('users')->insert(
-            ['name'=>'administrador', 'email'=>'leo.p.d1500@gmail.com','password'=>'12345678', 'rol'=>'administrador']
-        );
+        DB::table('users')->insert([
+            'name' => 'Leonardo',
+            'email' => 'leo.p.d1500@gmail.com',
+            'password' => Hash::make("12345678"),
+            'rol' => 'administrador'
+        ]);
     }
     /**
      * Reverse the migrations.

@@ -26,12 +26,13 @@ class EscuelaController extends Controller
      */
     public function create()
     {
+        $escuelas = Escuela::all();
         if(!Auth::user()){
             return redirect('inicio');
         }else if(Auth::user()->rol == "administrador"){
             //$escuelas = Escuela::all();
             //return view("registroEscuela")->with("escuelas", $escuelas);
-            return view("registroEscuela");
+            return view("registroEscuela")->with('escuelas', $escuelas);
         }
     }
 
@@ -56,11 +57,11 @@ class EscuelaController extends Controller
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
         $escuela = new Escuela();
         $escuela->nombre = $request->nombre;
         $escuela->grado = $request->grado;
         $escuela->turno = $request->turno;
+        $escuela->save();
         return redirect('/Escuelas');
     }
 

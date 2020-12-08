@@ -13,7 +13,7 @@ class CreateEquipamiento extends Migration
      */
     public function up()
     {
-        Schema::create('uniforme', function (Blueprint $table) {
+        Schema::create('equipamiento', function (Blueprint $table) {
             $table->bigIncrements('idEquipamiento');
             $table->string('nombre');
             $table->string('foto')->default('logo.jpg');

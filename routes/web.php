@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Escuela;
+use App\Uniforme;
 use App\Equipamiento;
 
 // Route::get('/', function () {
@@ -13,18 +13,23 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::redirect('/', 'loginLU');
+Route::redirect('/home', 'inicio');
 
 Route::get('/loginLU', function(){
-    return view('login');
+    if(is_null(Auth::user()))
+
+        return view('login');
+    else
+        return redirect('/inicio');
 });
 
 
 
 Route::get('/inicio', function(){   
-    //$escuelas = Escuela::all();
-    //$equipamiento = Equipamiento::all();
-    //return view('inicio')->with('escuelas', $escuelas)->with('equipamiento', $equipamiento);
-    return view('inicio');
+    $uniformes = Uniforme::all();
+    $equipamiento = Equipamiento::all();
+    return view('inicio')->with('uniformes', $uniformes)->with('equipamiento', $equipamiento);
+    //return view('inicio');
 
 });
 
@@ -33,10 +38,10 @@ Route::get('/inicio', function(){
 Route::get('/usuarios', 'UsuariosController@index');
 Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');
 Route::get('/Escuelas/elimina/{id}', 'EscuelaController@destroy');
-
+Route::get('/Uniforme/elimina/{id}', 'UniformeController@destroy');
 Route::get('/registro/Uniforme', 'UniformeController@create');
 Route::get('/Escuelas', 'EscuelaController@create');
-
+Route::get('/Uniforme/{id}', 'Uniforme@edit');
 Route::get('/Cotizar', function(){return view('cotizar');});
 //Rutas POST
 Route::post('/registroUsuario', 'UsuariosController@store');

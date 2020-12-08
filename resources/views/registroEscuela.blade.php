@@ -13,10 +13,11 @@
                             @foreach($escuelas as $e)
                                 <div class="row">
                                     <ul class="collection">
-                                        <li class="collection-item">Nombre: {{$e->nombre}}</li>
+                                        <li class="collection-item"> Nombre:<a href=""> {{$e->nombre}}</a> 
                                         <a href="/Escuelas/elimina/{{$e->id}}" style="color:#D92534;" class="secondary-content" id="EliminarUniforme" onclick="return Revisa()"> 
                                         Eliminar
                                         </a>
+                                        </li>
                                         <li class="collection-item">Grado: {{$e->grado}}</li>
                                         <li class="collection-item">Turno: {{$e->turno}}</li>
 

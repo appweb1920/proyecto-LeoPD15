@@ -1,7 +1,8 @@
 @extends('layouts.principal')
 
 @section('content')
-<div class="container" >
+@if(is_null(Auth::user()))
+<div class="container">
     <h2 class="center-align">Inicio de sesión</h2>
     <div class="row ">
         <form method="POST" action="{{ route('login') }}" class="col s12" >
@@ -29,4 +30,8 @@
     </div>
     <br><br><br><br><br>
 </div>
+@else
+<a href="/inicio" ></a>
+@endif
+
 @endsection

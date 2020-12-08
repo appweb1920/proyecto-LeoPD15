@@ -56,7 +56,7 @@
             color:#48B7CA;
         }
         a:hover{
-            color:#D92534;
+            color:#000000;
         }
         .uniforme{
             border:thin black solid; width:200px; height:200px; margin: 30px;
