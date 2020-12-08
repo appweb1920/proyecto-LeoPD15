@@ -16,7 +16,7 @@
                         <select name="idEscuelaUniforme" id="idEscuelaUniforme">                            
                             <option value="" disabled selected>Elige la escuela</option>
                             @foreach($escuelas as $e)
-                            <option value="{{$e->idEscuela}}">{{$e->nombre}}</option>
+                            <option value="{{$e->idEscuela}}">{{$e->nombre}} - {{$e->grado}}</option>
                             @endforeach
                         </select>
                         <label>Escuela</label>

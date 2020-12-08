@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Uniforme;
+use App\Escuela;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Escuela;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -72,17 +72,16 @@ class UniformeController extends Controller
      * @param  \App\Uniforme  $uniforme
      * @return \Illuminate\Http\Response
      */
-    public function show(Uniforme $uniforme)
+    public function show($id)
     {
-        //
+        if(!Auth::user()){
+            return redirect('/loginLU');
+        }else{
+            $uniforme = Uniforme::find($id);
+            $escuela = Escuela::find($uniforme->idEscuelaUniforme);
+            return view('uniforme')->with('uniforme',$uniforme)->with('escuela', $escuela);
+        }
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Uniforme  $uniforme
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $uniforme = Uniforme::find($id);
@@ -97,7 +96,6 @@ class UniformeController extends Controller
         $uniforme->talla = $request->talla;
         $uniforme->precio = $request->precio;
         $uniforme->cantidad = $request->cantidad;
-
         if(!is_null($request->file('foto'))){
             $extension = $request->file('foto')->getClientOriginalExtension();
             $request->file('foto')->storeAs(

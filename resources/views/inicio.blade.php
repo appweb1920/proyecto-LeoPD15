@@ -42,7 +42,14 @@
                     <div class="row"><h3 class="center-align">Uniformes</h3></div>
                     <div class="col s12" style="display: flex;flex-wrap: wrap;">
                     @foreach($uniformes as $u)      
-                        <a href="/Uniforme/{{$u->idUniforme}}"><div><img class="uniforme"src="{{ asset('/storage/uniformes/'.$u->foto) }}" alt=""></div></a>
+                    <div>
+                        <div class="uniforme">
+                            <a href="/Uniforme/{{$u->idUniforme}}">
+                                <img class="imagen" src="{{ asset('/storage/uniformes/'.$u->foto) }}" alt="">
+                            </a>
+                        </div>
+                        <div><h5>Talla: {{$u->talla}}</h5></div>
+                    </div>
                     @endforeach
                     </div>
                 @else

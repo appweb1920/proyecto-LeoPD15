@@ -61,6 +61,9 @@
         .uniforme{
             border:thin black solid; width:200px; height:200px; margin: 30px;
         }
+        .imagen{
+            width:198px; height:198px;
+        }
         /*margin - arriba/derecha/abajo/izquierda*/
     </style>
 </head>

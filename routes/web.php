@@ -41,7 +41,8 @@ Route::get('/Escuelas/elimina/{id}', 'EscuelaController@destroy');
 Route::get('/Uniforme/elimina/{id}', 'UniformeController@destroy');
 Route::get('/registro/Uniforme', 'UniformeController@create');
 Route::get('/Escuelas', 'EscuelaController@create');
-Route::get('/Uniforme/{id}', 'Uniforme@edit');
+Route::get('/Uniforme/{id}', 'UniformeController@show');
+Route::get('/Uniforme/editar/{id}', 'UniformeController@edit');
 Route::get('/Cotizar', function(){return view('cotizar');});
 //Rutas POST
 Route::post('/registroUsuario', 'UsuariosController@store');
