@@ -85,13 +85,12 @@ class UniformeController extends Controller
      */
     public function edit($id)
     {
-        
+        $uniforme = Uniforme::find($id);
     }
 
     public function update(Request $request)
     {
         $uniforme = Uniforme::find($request->idUniforme);
-
         $uniforme->idEscuelaUniforme = $request->idEscuelaUniforme;
         $uniforme->genero = $request->genero;
         $uniforme->tipo = $request->tipo;
@@ -105,7 +104,6 @@ class UniformeController extends Controller
                 'public/uniformes', $uniforme->idUniforme . "." . $extension);
             $uniforme->foto = $uniforme->idUniforme . "." . $extension;
         }
-
         $uniform->save();
         return back()->withInput();
         
