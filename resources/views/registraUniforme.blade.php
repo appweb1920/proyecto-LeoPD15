@@ -53,35 +53,6 @@
                         <label for="tipo">Tipo</label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s8">
-                        <input type="number" name="talla" id="talla" value="{{old('talla')}}" min="4" max="40">
-                        <label for="talla">Talla</label>
-                    </div>
-                    @error('talla')
-                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
-                    @enderror
-                </div>
-                
-                <div class="row">
-                    <div class="input-field col s8">
-                        <input type="number" name="cantidad" id="cantidad" value="{{old('cantidad')}}" min="0">
-                        <label for="cantidad">Cantidad</label>
-                    </div>
-                    @error('cantidad')
-                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
-                    @enderror
-                </div>
-                
-                <div class="row">                    
-                    <div class="input-field col s8">
-                        <input type="number" name="precio" id="precio" value="{{old('precio')}}" min="0">
-                        <label for="precio">Precio</label>
-                    </div>
-                    @error('precio')
-                    <span style="background-color:#E57373;"><b>{{ $message }}</b></span>
-                    @enderror
-                </div>
                 <div class="row">                    
                     <div class="input-field col s8" >
                         <h6>Elige una foto</h6>        

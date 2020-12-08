@@ -19,8 +19,6 @@
                                         </a>
                                         </li>
                                         <li class="collection-item">Grado: {{$e->grado}}</li>
-                                        <li class="collection-item">Turno: {{$e->turno}}</li>
-
                                     </ul>
                                 </div>
                             @endforeach
@@ -49,21 +47,12 @@
                             <div class="row">
                                 <div class="input-field col s8">
                                     <select name="grado" id="grado">
-                                        <option value="kinder">Kinder</option>
-                                        <option value="primaria">Primaria</option>
-                                        <option value="secundaria">Secundaria</option>
-                                        <option value="preparatoria">Preparatoria</option>
+                                        <option value="Kinder">Kinder</option>
+                                        <option value="Primaria">Primaria</option>
+                                        <option value="Secundaria">Secundaria</option>
+                                        <option value="Preparatoria">Preparatoria</option>
                                     </select>
                                     <label for="grado">Grado</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s8">
-                                    <select name="turno" id="turno">
-                                        <option value="matutino">Matutino</option>
-                                        <option value="vespertino">Vespertino</option>
-                                    </select>
-                                    <label for="turno">Turno (Matutino/Vespertino)</label>
                                 </div>
                             </div>
                             <div class="row">

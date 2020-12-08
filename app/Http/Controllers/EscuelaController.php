@@ -51,7 +51,6 @@ class EscuelaController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nombre'=> 'required|max:20',
-            'turno' => 'required',
             'grado' => 'required'
         ], $messages);
         if($validator->fails()){
@@ -60,7 +59,6 @@ class EscuelaController extends Controller
         $escuela = new Escuela();
         $escuela->nombre = $request->nombre;
         $escuela->grado = $request->grado;
-        $escuela->turno = $request->turno;
         $escuela->save();
         return redirect('/Escuelas');
     }

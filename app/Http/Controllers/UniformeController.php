@@ -38,9 +38,6 @@ class UniformeController extends Controller
             'idEscuelaUniforme' => "required",
             'genero' => "required",
             'tipo' => "required",
-            'talla' => "required",
-            'cantidad' => "required|min:0",
-            'precio' => "required|min:0",
         ], $messages);
 
         if($validator->fails()){
@@ -50,9 +47,6 @@ class UniformeController extends Controller
         $uniforme->idEscuelaUniforme = $request->idEscuelaUniforme;
         $uniforme->genero = $request->genero;
         $uniforme->tipo = $request->tipo;
-        $uniforme->talla = $request->talla;
-        $uniforme->precio = $request->precio;
-        $uniforme->cantidad = $request->cantidad;
         $uniforme->foto = "";
         $uniforme->save();
         if($request->file('foto') != 'null'){
@@ -93,9 +87,6 @@ class UniformeController extends Controller
         $uniforme->idEscuelaUniforme = $request->idEscuelaUniforme;
         $uniforme->genero = $request->genero;
         $uniforme->tipo = $request->tipo;
-        $uniforme->talla = $request->talla;
-        $uniforme->precio = $request->precio;
-        $uniforme->cantidad = $request->cantidad;
         if(!is_null($request->file('foto'))){
             $extension = $request->file('foto')->getClientOriginalExtension();
             $request->file('foto')->storeAs(

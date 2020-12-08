@@ -48,7 +48,6 @@
                                 <img class="imagen" src="{{ asset('/storage/uniformes/'.$u->foto) }}" alt="">
                             </a>
                         </div>
-                        <div><h5>Talla: {{$u->talla}}</h5></div>
                     </div>
                     @endforeach
                     </div>

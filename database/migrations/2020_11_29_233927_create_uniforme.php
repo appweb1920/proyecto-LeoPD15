@@ -17,11 +17,8 @@ class CreateUniforme extends Migration
             $table->bigIncrements('idUniforme');
             $table->unsignedBigInteger('idEscuelaUniforme');
             $table->string('foto')->default('logo.jpg');
-            $table->integer('cantidad');
             $table->string('genero');
-            $table->float('precio');
             $table->string('tipo');
-            $table->string('talla');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('idEscuelaUniforme')->references('idEscuela')->on('Escuela');
