@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Equipamiento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class EquipamientoController extends Controller
 {
@@ -14,28 +17,47 @@ class EquipamientoController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('registraEquipamiento');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $messages =[
+            'required' => 'Este campo es requerido!',
+
+        ];
+        $validator = Validator::make($request->all(),[
+            'nombre' => "required",
+            'precio' => "required",
+            'talla' => "required",
+        ], $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $equipamiento = new Equipamiento();
+        $equipamiento->nombre = $request->nombre;
+        $equipamiento->precio = $request->precio;
+        $equipamiento->cantidad = $request->cantidad;
+        $equipamiento->talla = $request->talla;
+        $equipamiento->foto = "";
+        $equipamiento->save();
+        if($request->file('foto') != 'null'){
+            $extension = $request->file('foto')->getClientOriginalExtension();
+            $request->file('foto')->storeAs(
+                    'public/equipamiento', $equipamiento->idEquipamiento . "." . $extension);
+            
+            $equipamiento->foto = $equipamiento->idEquipamiento . "." . $extension;
+        }
+        $equipamiento->save();
+        return redirect('/inicio');
+
+
     }
 
     /**
@@ -44,9 +66,10 @@ class EquipamientoController extends Controller
      * @param  \App\Equipamiento  $equipamiento
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipamiento $equipamiento)
+    public function show($id)
     {
-        //
+        $equipamiento = Equipamiento::find($id);
+        return view('equipamiento')->with('equipamiento', $equipamiento);        
     }
 
     /**
@@ -72,14 +95,10 @@ class EquipamientoController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Equipamiento  $equipamiento
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Equipamiento $equipamiento)
+    public function destroy($id)
     {
-        //
+        $equipamiento = Equipamiento::find($id);
+        $equipamiento->delete();
+        return redirect('/inicio');
     }
 }

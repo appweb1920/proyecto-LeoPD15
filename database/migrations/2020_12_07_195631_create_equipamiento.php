@@ -18,6 +18,7 @@ class CreateEquipamiento extends Migration
             $table->string('nombre');
             $table->string('foto')->default('logo.jpg');
             $table->float('precio');
+            $table->integer('cantidad');
             $table->string('talla')->nullable();
             $table->softDeletes();
             $table->timestamps();

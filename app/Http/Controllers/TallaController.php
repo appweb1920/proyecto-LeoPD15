@@ -72,9 +72,14 @@ class TallaController extends Controller
      * @param  \App\Talla  $talla
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Talla $talla)
+    public function update(Request $request)
     {
-        //
+        $talla = Talla::find($request->idTalla);
+        $talla->precio = $request->precio; 
+        $talla->cantidad = $request->cantidad; 
+        $talla->save();
+
+        return redirect()->back();
     }
 
     /**

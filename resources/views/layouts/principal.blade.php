@@ -25,7 +25,7 @@
             $('select').formSelect();$('.fixed-action-btn').floatingActionButton();
         });
         function Revisa(){
-            return(confirm("Deseas eliminar al usuario?"));
+            return(confirm("Seguro que desea eliminar?"));
         }
     </script>
     

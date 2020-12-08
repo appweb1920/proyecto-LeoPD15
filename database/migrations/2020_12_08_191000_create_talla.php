@@ -21,15 +21,10 @@ class CreateTalla extends Migration
             $table->float('precio');
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('idTallaUniforme')->references('idUniforme')->on('Uniforme');
+            $table->foreign('idTallaUniforme')->references('idUniforme')->on('Uniforme')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('talla', function (Blueprint $table) {
