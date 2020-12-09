@@ -15,23 +15,108 @@
                         <div class="col s2 offset-s5"><a href=""><h5>Editar</h5></a></div>
                     </div>
                 </div>
-                <div class="col s6 offset-s1">
+                <div class="col s7 offset-s1" >
+                    <div class="col s5">
+                        <div class="row">
+                        <script type="text/javascript">
+                            function actualiza(){
+                                var e = document.getElementById("idTalla");
+                                //Obtener el valor (idTalla) de la talla seleccionada
+                                var idTalla = e.options[e.selectedIndex].value;
+                                //Obtener el valor en numero de la talla seleccionada
+                                var talla = e.options[e.selectedIndex].text;
+                                //Cambiar el valor del idTalla para registrarlo en la venta
+                                var idtallaVenta = document.getElementById('idTallaVenta');
+                                var tallaVenta = document.getElementById('tallaVenta');
+                                idtallaVenta.value = idTalla;
+                                tallaVenta.value = talla;
+                            }
+                        </script>
+                            <div>
+                                @if(!is_null($tallas))
+                                <div class="input-field col s12">
+                                    <select name="idTalla" id="idTalla" onchange="actualiza()">
+                                            <option value="" disabled selected>Elige una talla</option>
+                                        @foreach($tallas as $t)
+                                            <option value="{{$t->idTalla}}">{{$t->talla}}</option>
+                                        @endforeach
+                                    </select>
+                                    
+                                <label>Talla</label>
+                                @error('idVentaTalla')
+                                    <p style="background-color:#E57373">{{ $message }}</p>
+                                @enderror
+                                </div>
+                                @else
+                                <h5>No hay tallas disponibles</h5>
+                                @endif
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div><h5>Disponibles: <h5 class="disponible"></h5></h5></div>
+                        </div><br>
+                        <div class="row">
+                            <div><h5>Precio: $<h5 class="precio"></h5></h5></div>
+                        </div><br>
+                    </div>
+                    <div class="col s6 offset-s1">
                     <div class="row">
-                        <div><h5>Talla: {{ $uniforme->talla }}</h5></div>
-                    </div><br>
-                    <div class="row">
-                        <div><h5>Disponibles: {{ $uniforme->cantidad }}</h5></div>
-                    </div><br>
-                    <div class="row">
-                        <div><h5>Precio: ${{ $uniforme->precio }}</h5></div>
-                    </div><br>
+                        <div class="col s10" >
+                            <div class="row"><h5>Vender</h5></div>
+                            <form action="/Venta/Uniforme" method="POST">
+                            @csrf
+                                <input type="hidden" name="idTallaVenta" id="idTallaVenta" class="validate">
+                                <input type="hidden" name="idVentaUniforme" id="idVentaUniforme" value="{{$uniforme->idUniforme}}">
+                                <input type="hidden" name="tallaVenta" id="tallaVenta" class="validate">
+                                <div class="row" >
+                                    <div class="input-field col s8">
+                                        <input type="number" name="cantidad" id="cantidad" min="0" class="validate">
+                                        <label for="cantidad">Cantidad de venta:</label>
+                                        @error('cantidad')
+                                            <p style="background-color:#E57373">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row" >  
+                                    <div class="input-field col s8">
+                                        <button type="submit" class="btn waves-effect" >Vender</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
             @endif
         </div>
     </div>
     <div class="row">
-        <h3>Venta</h3>
+        <h3>Ventas</h3>
+        <div class="col s8 offset-s2" >
+            @if(!is_null($ventas))
+                <table class="responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Dia</th>
+                            <th>Talla</th>
+                            <th>Cantidad vendida</th>
+                        </tr>
+                        <tbody>
+                            @foreach($ventas as $v)
+                            <tr>
+                                <th>{{ $v->dia }}</th>
+                                <th>{{ $v->talla }}</th>
+                                <th>{{ $v->cantidad }}</th>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </thead>
+                </table>
+            @else
+                <h5>Aún no hay ventas registradas</h5>
+            @endif
+        </div>
     </div>
 </div>
 <br>

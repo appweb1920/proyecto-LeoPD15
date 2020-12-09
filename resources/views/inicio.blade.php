@@ -30,7 +30,7 @@
         </div>
         @endif
     </div>
-@endif
+
     <div class="col s9 ">
         <div class="row">
             <div class="col s12">
@@ -75,4 +75,9 @@
 
 </div>
 <br><br><br><br><br><br><br><br><br><br>
+
+@else
+<meta http-equiv="refresh" content="0; URL=/loginLU" />
+
+@endif
 @endsection

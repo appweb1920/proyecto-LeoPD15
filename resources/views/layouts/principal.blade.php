@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
-    
     <title>Los Uniformes</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -28,7 +27,6 @@
             return(confirm("Seguro que desea eliminar?"));
         }
     </script>
-    
     <style>
         body{
             font-family: 'Alatsi', sans-serif;
@@ -92,9 +90,7 @@
             @endguest
             </div>
         </nav>
-
         @yield('content')
-
     </div>
     <br><br><br><br><br>
     <!--

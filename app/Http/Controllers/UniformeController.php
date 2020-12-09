@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Uniforme;
+use App\Talla;
 use App\Escuela;
+use App\VentaUniforme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -73,7 +76,21 @@ class UniformeController extends Controller
         }else{
             $uniforme = Uniforme::find($id);
             $escuela = Escuela::find($uniforme->idEscuelaUniforme);
-            return view('uniforme')->with('uniforme',$uniforme)->with('escuela', $escuela);
+            $tallas = DB::select(
+                'SELECT * FROM talla
+                INNER JOIN uniforme
+                ON talla.idTallaUniforme = uniforme.idUniforme
+                WHERE uniforme.idUniforme = ' . $id 
+            );
+            $ventas = DB::select(
+                'SELECT * FROM venta_uniforme
+                INNER JOIN uniforme
+                ON venta_uniforme.idVentaUniforme = uniforme.idUniforme
+                WHERE uniforme.idUniforme = ' . $id
+            );
+            //Ir a la vista del uniforme con todo lo necesario, su escuela, el uniforme en cuestión, las tallas y las ventas
+            return view('uniforme')->with('uniforme',$uniforme)->with('escuela', $escuela)
+            ->with('tallas', $tallas)->with("ventas", $ventas);
         }
     }
     public function edit($id)

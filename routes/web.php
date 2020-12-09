@@ -54,5 +54,6 @@ Route::post('/registroUsuario', 'UsuariosController@store');
 Route::post('/registro/Uniforme/Guardar', 'UniformeController@store');
 Route::post('/Escuelas/Guardar', 'EscuelaController@store');
 Route::post('/Talla/Guardar', 'TallaController@store');
+Route::post('/Venta/Uniforme', 'VentaUniformeController@store');
 Route::post('/Talla/editar', 'TallaController@update');
 Route::post('/Equipamiento/guardar', 'EquipamientoController@store');
