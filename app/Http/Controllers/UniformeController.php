@@ -96,12 +96,12 @@ class UniformeController extends Controller
     public function edit($id)
     {
         $uniforme = Uniforme::find($id);
+        return view('editaUniforme')->with("uniforme", $uniforme);
     }
 
     public function update(Request $request)
     {
         $uniforme = Uniforme::find($request->idUniforme);
-        $uniforme->idEscuelaUniforme = $request->idEscuelaUniforme;
         $uniforme->genero = $request->genero;
         $uniforme->tipo = $request->tipo;
         if(!is_null($request->file('foto'))){
@@ -110,9 +110,8 @@ class UniformeController extends Controller
                 'public/uniformes', $uniforme->idUniforme . "." . $extension);
             $uniforme->foto = $uniforme->idUniforme . "." . $extension;
         }
-        $uniform->save();
-        return back()->withInput();
-        
+        $uniforme->save();
+        return redirect('/Uniforme/' . $request->idUniforme);
     }
 
     /**

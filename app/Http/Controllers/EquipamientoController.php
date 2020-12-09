@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Equipamiento;
+use App\VentaEquipamiento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class EquipamientoController extends Controller
 {
@@ -60,16 +62,16 @@ class EquipamientoController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Equipamiento  $equipamiento
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $equipamiento = Equipamiento::find($id);
-        return view('equipamiento')->with('equipamiento', $equipamiento);        
+        $ventas = DB::select(
+            'SELECT * FROM venta_equipamiento
+            INNER JOIN equipamiento
+            ON venta_equipamiento.idVentaEquipamiento = equipamiento.idEquipamiento
+            WHERE equipamiento.idEquipamiento = ' . $id
+        );
+        return view('equipamiento')->with('equipamiento', $equipamiento)->with('ventas', $ventas);        
     }
 
     /**
@@ -98,6 +100,7 @@ class EquipamientoController extends Controller
     public function destroy($id)
     {
         $equipamiento = Equipamiento::find($id);
+        Storage::delete('Equipamiento/' . $equipamiento->foto);
         $equipamiento->delete();
         return redirect('/inicio');
     }

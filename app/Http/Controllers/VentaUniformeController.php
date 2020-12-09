@@ -38,7 +38,6 @@ class VentaUniformeController extends Controller
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
         $venta = new VentaUniforme();        
         $venta->idVentaTalla = $request->idTallaVenta;
         $venta->idVentaUniforme = $request->idVentaUniforme;

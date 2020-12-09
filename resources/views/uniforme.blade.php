@@ -12,7 +12,7 @@
                     <img class="imagen" src="{{ asset('/storage/uniformes/'.$uniforme->foto) }}" alt="{{ asset('/storage/logo.jpg') }}"></div>
                     <div class="row">
                         <div class="col s2 offset-s5"><a href="/uniforme/tallas/{{$uniforme->idUniforme}}"><h5>Tallas</h5></a></div>
-                        <div class="col s2 offset-s5"><a href=""><h5>Editar</h5></a></div>
+                        <div class="col s2 offset-s5"><a href="/Uniforme/editar/{{$uniforme->idUniforme}}"><h5>Editar</h5></a></div>
                     </div>
                 </div>
                 <div class="col s7 offset-s1" >

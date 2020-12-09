@@ -17,7 +17,7 @@ class CreateVentaEquipamiento extends Migration
             $table->bigIncrements('idVenta');
             $table->unsignedBigInteger('idVentaEquipamiento');
             $table->date('dia');
-            $table->integer('talla');
+            $table->string('talla');
             $table->integer('cantidad');
             $table->softDeletes();
             $table->timestamps();

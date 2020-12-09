@@ -17,28 +17,71 @@
                     </div>
                 </div>
                 <div class="col s6">
-                    <div class="row">
-                        <div><h5>Talla: {{$equipamiento->talla}}</h5></div>
+                    <div class="col s6">
+                        <div class="row">
+                            <div><h5>Talla: {{$equipamiento->talla}}</h5></div>
+                        </div>
+                        <div class="row">
+                            <div><h5>Precio: {{$equipamiento->precio}}</h5></div>
+                        </div>
+                        <div class="row">
+                            <div><h5>Disponible: {{$equipamiento->cantidad}}</h5></div>
+                        </div>  
                     </div>
-                    <div class="row">
-                        <div><h5>Precio: {{$equipamiento->precio}}</h5></div>
-                    </div>
-                    <div class="row">
-                        <div><h5>Disponible: {{$equipamiento->cantidad}}</h5></div>
+                    <div class="col s6">
+                        <div class="row">
+                            <div class="col s10">
+                                <form action="/Venta/Equipamiento" method="POST">
+                                @csrf
+                                    <input type="hidden" name="idVentaEquipamiento" id="idVentaEquipamiento" value="{{$equipamiento->idEquipamiento}}">
+                                    <input type="hidden" name="talla" id="talla" value="{{$equipamiento->talla}}">
+                                    <input type="hidden" name="" id="">
+                                    <div class="col s8">
+                                        <input type="text" name="cantidad" id="cantidad">
+                                    </div>
+                                    <div class="row" >  
+                                        <div class="input-field col s8">
+                                            <button type="submit" class="btn waves-effect" >Vender</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="row">
-        <div class="row">
-            <h4 class="center-align">Venta</h4>
-        </div>
-    </div>
         @else
-            <div><h5> No existe el equipamiento  <a href="/inicio">Regresar</a> </h5></div>
-        
-        </div>
-         @endif
-</div>
+        <meta http-equiv="refresh" content="0; URL=/inicio" />
+        @endif
 
+    </div>
+    
+    <div class="row">
+        <h3>Ventas</h3>
+        <div class="col s8 offset-s2">
+            @if(!is_null($ventas))
+                <table class="responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Dia</th>
+                            <th>Talla</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($ventas as $v)
+                            <tr>
+                                <th>{{$v->dia}}</th>
+                                <th>{{$v->talla}}</th>
+                                <th>{{$v->cantidad}}</th>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @else
+                <h3>No se han registrado ventas</h3>
+            @endif
+        </div>
+    </div>
+</div>
 @endsection
