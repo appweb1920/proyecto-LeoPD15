@@ -36,10 +36,10 @@ class VentaEquipamientoController extends Controller
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        dd($request);
         $venta = new VentaEquipamiento();
         $venta->idVentaEquipamiento = $request->idVentaEquipamiento;
         $venta->vendido = $request->vendido;
+        $venta->nombre = $request->nombre;
         $venta->talla = $request->talla;
         $venta->dia = Carbon::now()->format('Y-m-d');
         $venta->save();

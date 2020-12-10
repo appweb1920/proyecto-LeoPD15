@@ -35,6 +35,7 @@
                                 @csrf
                                     <input type="hidden" name="idVentaEquipamiento" id="idVentaEquipamiento" value="{{$equipamiento->idEquipamiento}}">
                                     <input type="hidden" name="talla" id="talla" value="{{$equipamiento->talla}}">
+                                    <input type="hidden" name="nombre" id="nombre" value="{{$equipamiento->nombre}}">
                                     <input type="hidden" name="" id="">
                                     <div class="col s8">
                                         <input type="text" name="vendido" id="vendido">

@@ -15,13 +15,14 @@ class CreateVentaEquipamiento extends Migration
     {
         Schema::create('venta_equipamiento', function (Blueprint $table) {
             $table->bigIncrements('idVenta');
-            $table->unsignedBigInteger('idVentaEquipamiento');
+            $table->unsignedBigInteger('idVentaEquipamiento')->nullable();
+            $table->string('nombre');
             $table->date('dia');
             $table->string('talla');
             $table->integer('vendido');
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('idVentaEquipamiento')->references('idEquipamiento')->on('Equipamiento');
+            $table->foreign('idVentaEquipamiento')->references('idEquipamiento')->on('Equipamiento')->onDelete('set null');
         });
     }
 

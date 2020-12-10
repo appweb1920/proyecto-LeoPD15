@@ -44,6 +44,7 @@ class VentaUniformeController extends Controller
         $venta->dia = Carbon::now()->format('Y-m-d');
         $venta->talla = $request->tallaVenta;
         $venta->vendido = $request->vendido;
+        $venta->escuela = $request->escuela;
         $venta->save();
         $talla = Talla::find($request->idTallaVenta);
         $talla->cantidad -= $request->vendido;

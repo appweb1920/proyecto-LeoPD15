@@ -40,6 +40,7 @@ Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');
 Route::get('/Escuelas/elimina/{id}', 'EscuelaController@destroy');
 Route::get('/Uniforme/elimina/{id}', 'UniformeController@destroy');
 Route::get('/Equipamiento/elimina/{id}', 'EquipamientoController@destroy');
+Route::get('/Uniforme/elimina/{id}', 'UniformeController@destroy');
 Route::get('/uniforme/tallas/{id}', 'TallaController@show');
 
 Route::get('/registro/Equipamiento', 'EquipamientoController@create');

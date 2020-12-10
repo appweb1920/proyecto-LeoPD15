@@ -12,14 +12,14 @@ class Uniforme extends Model
     protected $primaryKey = 'idUniforme';
     
 
-    public function getUniformesGrado(string $grado)
+    public function getEscuela($id)
     {
-        $uniformesG = DB::select(
+        $escuela = DB::select(
             'SELECT * FROM Uniforme 
             INNER JOIN Escuela
-            ON Uniforme.idEscuela = Escuela.idEsucela
-            WHERE Escuela.grado = ' . $grado
+            ON Uniforme.idEscuelaUniforme = Escuela.idEscuela
+            WHERE Escuela.idEscuela = ' . $id
         );
-        return $uniformesG;
+        return $escuela;
     }
 }

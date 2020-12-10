@@ -122,6 +122,7 @@ class UniformeController extends Controller
      */
     public function destroy($id)
     {
+        $uniforme = Uniforme::find();
         Storage::delete('file.jpg');
     }
 }
