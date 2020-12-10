@@ -32,7 +32,7 @@ class VentaUniformeController extends Controller
         ];
         $validator = Validator::make($request->all(),[
             'idTallaVenta' => "required",
-            'cantidad' => "required"
+            'vendido' => "required"
         ], $messages);
 
         if($validator->fails()){
@@ -43,10 +43,10 @@ class VentaUniformeController extends Controller
         $venta->idVentaUniforme = $request->idVentaUniforme;
         $venta->dia = Carbon::now()->format('Y-m-d');
         $venta->talla = $request->tallaVenta;
-        $venta->cantidad = $request->cantidad;
+        $venta->vendido = $request->vendido;
         $venta->save();
         $talla = Talla::find($request->idTallaVenta);
-        $talla->cantidad -= $request->cantidad;
+        $talla->cantidad -= $request->vendido;
         $talla->save();
         return redirect()->back();
     }

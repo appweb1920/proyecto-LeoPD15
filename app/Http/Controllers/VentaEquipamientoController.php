@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\VentaEquipamiento;
+use App\Equipamiento;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -29,22 +30,23 @@ class VentaEquipamientoController extends Controller
         ];
         $validator = Validator::make($request->all(),[
             'idVentaEquipamiento' => "required",
-            'cantidad' => "required"
+            'vendido' => "required"
         ], $messages);
 
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
+        dd($request);
         $venta = new VentaEquipamiento();
         $venta->idVentaEquipamiento = $request->idVentaEquipamiento;
-        $venta->cantidad = $request->cantidad;
+        $venta->vendido = $request->vendido;
         $venta->talla = $request->talla;
         $venta->dia = Carbon::now()->format('Y-m-d');
         $venta->save();
-
+        $equipamiento = Equipamiento::find($request->idVentaEquipamiento);
+        $equipamiento->cantidad -= $request->vendido;
+        $equipamiento->save();
         return redirect()->back();
-
     }
 
     public function show(VentaEquipamiento $ventaEquipamiento)

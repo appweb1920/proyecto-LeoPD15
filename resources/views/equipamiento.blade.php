@@ -13,7 +13,7 @@
                     <img class="imagen" src="{{ asset('/storage/equipamiento/'.$equipamiento->foto) }}" alt="{{ asset('/storage/logo.jpg') }}"></div>
                     <div class="row">
                         <div class="col s2"> <a href="/Equipamiento/elimina/{{$equipamiento->idEquipamiento}}" onclick="return Revisa()" style="color:red">Eliminar</a></div>
-                        <br><div class="col s2"> <a href="">Editar</a> </div>
+                        <br><div class="col s2"> <a href="/Equipamiento/editar/{{$equipamiento->idEquipamiento}}">Editar</a> </div>
                     </div>
                 </div>
                 <div class="col s6">
@@ -37,7 +37,8 @@
                                     <input type="hidden" name="talla" id="talla" value="{{$equipamiento->talla}}">
                                     <input type="hidden" name="" id="">
                                     <div class="col s8">
-                                        <input type="text" name="cantidad" id="cantidad">
+                                        <input type="text" name="vendido" id="vendido">
+                                        <label for="vendido">Cantidad a vender</label>
                                     </div>
                                     <div class="row" >  
                                         <div class="input-field col s8">
@@ -53,7 +54,6 @@
         @else
         <meta http-equiv="refresh" content="0; URL=/inicio" />
         @endif
-
     </div>
     
     <div class="row">
@@ -73,7 +73,8 @@
                             <tr>
                                 <th>{{$v->dia}}</th>
                                 <th>{{$v->talla}}</th>
-                                <th>{{$v->cantidad}}</th>
+                                <th>{{$v->vendido}}</th>
+                                <?php echo $equipamiento->cantidad ?>
                             </tr>
                         @endforeach
                     </tbody>

@@ -19,7 +19,7 @@ class CreateVentaUniforme extends Migration
             $table->unsignedBigInteger('idVentaTalla');
             $table->date('dia');
             $table->integer('talla');
-            $table->integer('cantidad');
+            $table->integer('vendido');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('idVentaUniforme')->references('idUniforme')->on('Uniforme');

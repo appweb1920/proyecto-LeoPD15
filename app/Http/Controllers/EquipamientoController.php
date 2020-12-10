@@ -53,7 +53,6 @@ class EquipamientoController extends Controller
             $extension = $request->file('foto')->getClientOriginalExtension();
             $request->file('foto')->storeAs(
                     'public/equipamiento', $equipamiento->idEquipamiento . "." . $extension);
-            
             $equipamiento->foto = $equipamiento->idEquipamiento . "." . $extension;
         }
         $equipamiento->save();
@@ -74,15 +73,15 @@ class EquipamientoController extends Controller
         return view('equipamiento')->with('equipamiento', $equipamiento)->with('ventas', $ventas);        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Equipamiento  $equipamiento
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Equipamiento $equipamiento)
+    public function edit($id)
     {
-        //
+        
+        if(Auth::user()){
+            if(Auth::user()->rol == "administrador" || Auth::user()->rol == "privilegio"){
+                $equipamiento = Equipamiento::find($id);
+                return view('editaEquipamiento')->with('equipamiento', $equipamiento);        
+            }
+        }        
     }
 
     /**
@@ -92,11 +91,20 @@ class EquipamientoController extends Controller
      * @param  \App\Equipamiento  $equipamiento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipamiento $equipamiento)
+    public function update(Request $request)
     {
-        //
+        $equipamiento = Equipamiento::find($request->idEquipamiento);
+        $equipamiento->nombre = $request->nombre;
+        $equipamiento->precio = $request->precio;
+        $equipamiento->cantidad = $request->cantidad;
+        if($request->file('foto')){
+            $extension = $request->file('foto')->getClientOriginalExtension();
+            $request->file('foto')->storeAs(
+                    'public/equipamiento', $equipamiento->idEquipamiento . "." . $extension);
+        }
+        $equipamiento->save();
+        return redirect('/inicio');
     }
-
     public function destroy($id)
     {
         $equipamiento = Equipamiento::find($id);

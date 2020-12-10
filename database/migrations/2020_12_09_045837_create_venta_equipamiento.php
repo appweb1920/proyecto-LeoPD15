@@ -18,18 +18,13 @@ class CreateVentaEquipamiento extends Migration
             $table->unsignedBigInteger('idVentaEquipamiento');
             $table->date('dia');
             $table->string('talla');
-            $table->integer('cantidad');
+            $table->integer('vendido');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('idVentaEquipamiento')->references('idEquipamiento')->on('Equipamiento');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('venta_equipamiento', function (Blueprint $table) {

@@ -14,7 +14,7 @@
                         <div class="col s2 offset-s5"><a href="/uniforme/tallas/{{$uniforme->idUniforme}}"><h5>Tallas</h5></a></div>
                         <div class="col s2 offset-s5"><a href="/Uniforme/editar/{{$uniforme->idUniforme}}"><h5>Editar</h5></a></div>
                     </div>
-                </div>
+                </div> <?php $talla = " "; ?>
                 <div class="col s7 offset-s1" >
                     <div class="col s5">
                         <div class="row">
@@ -28,20 +28,22 @@
                                 //Cambiar el valor del idTalla para registrarlo en la venta
                                 var idtallaVenta = document.getElementById('idTallaVenta');
                                 var tallaVenta = document.getElementById('tallaVenta');
+                                //Actualizar los campos para el registro de la venta
                                 idtallaVenta.value = idTalla;
                                 tallaVenta.value = talla;
                             }
                         </script>
                             <div>
                                 @if(!is_null($tallas))
+                                
                                 <div class="input-field col s12">
                                     <select name="idTalla" id="idTalla" onchange="actualiza()">
+                                    
                                             <option value="" disabled selected>Elige una talla</option>
                                         @foreach($tallas as $t)
                                             <option value="{{$t->idTalla}}">{{$t->talla}}</option>
                                         @endforeach
                                     </select>
-                                    
                                 <label>Talla</label>
                                 @error('idVentaTalla')
                                     <p style="background-color:#E57373">{{ $message }}</p>
@@ -53,10 +55,10 @@
                             </div>
                         </div><br>
                         <div class="row">
-                            <div><h5>Disponibles: <h5 class="disponible"></h5></h5></div>
+                            <div><input type="text" name="disponible" id="disponible"><label for="disponible">Disponible</label></div>
                         </div><br>
                         <div class="row">
-                            <div><h5>Precio: $<h5 class="precio"></h5></h5></div>
+                            <div><input type="text" name="precio" id="precio"><label for="precio">Precio</label></div>
                         </div><br>
                     </div>
                     <div class="col s6 offset-s1">
@@ -70,8 +72,8 @@
                                 <input type="hidden" name="tallaVenta" id="tallaVenta" class="validate">
                                 <div class="row" >
                                     <div class="input-field col s8">
-                                        <input type="number" name="cantidad" id="cantidad" min="0" class="validate">
-                                        <label for="cantidad">Cantidad de venta:</label>
+                                        <input type="number" name="vendido" id="vendido" min="0" class="validate">
+                                        <label for="vendido">Cantidad de venta:</label>
                                         @error('cantidad')
                                             <p style="background-color:#E57373">{{ $message }}</p>
                                         @enderror
@@ -107,7 +109,7 @@
                             <tr>
                                 <th>{{ $v->dia }}</th>
                                 <th>{{ $v->talla }}</th>
-                                <th>{{ $v->cantidad }}</th>
+                                <th>{{ $v->vendido }}</th>
                             </tr>
                             @endforeach
                         </tbody>

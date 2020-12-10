@@ -48,7 +48,9 @@ Route::get('/Escuelas', 'EscuelaController@create');
 Route::get('/Uniforme/{id}', 'UniformeController@show');
 Route::get('/Equipamiento/{id}', 'EquipamientoController@show');
 Route::get('/Uniforme/editar/{id}', 'UniformeController@edit');
+Route::get('/Equipamiento/editar/{id}', 'EquipamientoController@edit');
 Route::get('/Cotizar', function(){return view('cotizar');});
+
 //Rutas POST
 Route::post('/registroUsuario', 'UsuariosController@store');
 Route::post('/registro/Uniforme/Guardar', 'UniformeController@store');
@@ -59,3 +61,4 @@ Route::post('/Venta/Equipamiento', 'VentaEquipamientoController@store');
 Route::post('/Talla/editar', 'TallaController@update');
 Route::post('/Equipamiento/guardar', 'EquipamientoController@store');
 Route::post('/Uniforme/edicion/guardar', 'UniformeController@update');
+Route::post('/Equipamiento/edicion/guardar', 'EquipamientoController@update');
