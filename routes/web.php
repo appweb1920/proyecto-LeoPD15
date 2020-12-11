@@ -46,11 +46,12 @@ Route::get('/uniforme/tallas/{id}', 'TallaController@show');
 Route::get('/registro/Equipamiento', 'EquipamientoController@create');
 Route::get('/registro/Uniforme', 'UniformeController@create');
 Route::get('/Escuelas', 'EscuelaController@create');
+Route::get('/Cotizar', 'ContizacionController@index');
 Route::get('/Uniforme/{id}', 'UniformeController@show');
 Route::get('/Equipamiento/{id}', 'EquipamientoController@show');
 Route::get('/Uniforme/editar/{id}', 'UniformeController@edit');
 Route::get('/Equipamiento/editar/{id}', 'EquipamientoController@edit');
-Route::get('/Cotizar', function(){return view('cotizar');});
+
 
 //Rutas POST
 Route::post('/registroUsuario', 'UsuariosController@store');

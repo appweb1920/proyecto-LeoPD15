@@ -122,16 +122,16 @@
                             <th>Talla</th>
                             <th>Cantidad vendida</th>
                         </tr>
-                        <tbody>
-                            @foreach($ventas as $v)
-                            <tr>
-                                <th>{{ $v->dia }}</th>
-                                <th>{{ $v->talla }}</th>
-                                <th>{{ $v->vendido }}</th>
-                            </tr>
-                            @endforeach
-                        </tbody>
                     </thead>
+                    <tbody>
+                        @foreach($ventas as $v)
+                        <tr>
+                            <td>{{ $v->dia }}</td>
+                            <td>{{ $v->talla }}</td>
+                            <td>{{ $v->vendido }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             @else
                 <h5>Aún no hay ventas registradas</h5>
