@@ -37,10 +37,10 @@
                                 @endif
                         </div><br>
                         <div class="row">
-                            <div><input type="text" name="disponible" id="disponible" value=""><label for="disponible">Disponible</label></div>
+                            <div><input type="text" name="disponible" id="disponible" value="" disabled><label for="disponible">Disponible</label></div>
                         </div><br>
                         <div class="row">
-                            <div><input type="text" name="precio" id="precio"><label for="precio" value="">Precio</label></div>
+                            <div><input type="text" name="precio" id="precio"disabled><label for="precio">Precio</label></div>
                         </div><br>
                         <script type="text/javascript">
                             function actualiza(){
@@ -83,8 +83,6 @@
                                     <input type="hidden" name="idVentaUniforme" id="idVentaUniforme" value="{{$uniforme->idUniforme}}">
                                     <input type="hidden" name="tallaVenta" id="tallaVenta" class="validate">
                                     @foreach($uniforme->getEscuela($uniforme->idUniforme) as $escuela)
-
-                                    
                                     <input type="hidden" name="escuela" id="escuela" class="validate" value="{{$escuela->nombre}}-{{$escuela->grado}}-{{$uniforme->genero}}">
                                     @endforeach 
                                     <div class="row" >
