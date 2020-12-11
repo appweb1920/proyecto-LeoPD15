@@ -33,22 +33,29 @@ Route::get('/inicio', function(){
 
 });
 
-//Rutas GET
-
+/*----------------RUTAS GET----------------*/
 Route::get('/usuarios', 'UsuariosController@index');
+Route::get('/Cotizar', 'ContizacionController@index');
+Route::get('/Ventas', 'VentasController@index');
+//Eliminaciones
 Route::get('/usuarios/elimina/{id}', 'UsuariosController@destroy');
 Route::get('/Escuelas/elimina/{id}', 'EscuelaController@destroy');
 Route::get('/Uniforme/elimina/{id}', 'UniformeController@destroy');
 Route::get('/Equipamiento/elimina/{id}', 'EquipamientoController@destroy');
 Route::get('/Uniforme/elimina/{id}', 'UniformeController@destroy');
-Route::get('/uniforme/tallas/{id}', 'TallaController@show');
 
+//Mostrar elemento especifico
+Route::get('/uniforme/tallas/{id}', 'TallaController@show');
+Route::get('/Uniforme/{id}', 'UniformeController@show');
+Route::get('/Equipamiento/{id}', 'EquipamientoController@show');
+
+//Mostrar formulario de creacion
 Route::get('/registro/Equipamiento', 'EquipamientoController@create');
 Route::get('/registro/Uniforme', 'UniformeController@create');
 Route::get('/Escuelas', 'EscuelaController@create');
-Route::get('/Cotizar', 'ContizacionController@index');
-Route::get('/Uniforme/{id}', 'UniformeController@show');
-Route::get('/Equipamiento/{id}', 'EquipamientoController@show');
+
+
+//Edicion
 Route::get('/Uniforme/editar/{id}', 'UniformeController@edit');
 Route::get('/Equipamiento/editar/{id}', 'EquipamientoController@edit');
 

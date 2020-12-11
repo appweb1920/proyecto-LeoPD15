@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if(!is_null($equipamiento))
+@if(!is_null($equipamiento) && !is_null(Auth::user()))
 <div class="container">
     <div class="row">Edición de Equipamiento</div>
     <div class="row center-align">

@@ -1,6 +1,7 @@
 @extends('layouts.principal')
 
 @section('content')
+@if(!is_null(Auth:user()))
 <div class="container">
 
     <h1 class="center-align">Registro de uniforme</h1><br><br>
@@ -49,4 +50,8 @@
 
 
 </div>
+@else
+<meta http-equiv="refresh" content="0; URL=/loginLU"/>
+@endif
+
 @endsection

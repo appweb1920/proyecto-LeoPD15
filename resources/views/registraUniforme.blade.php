@@ -1,6 +1,7 @@
 @extends('layouts.principal')
 
 @section('content')
+@if(!is_null(Auth::user()))
 <br><br><br>
 <div class="container">
     <div class="row">
@@ -71,11 +72,9 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+<br><br><br><br><br>
+@else
+<meta http-equiv="refresh" content="0; URL=/loginLU"/>
+@endif
 
 @endsection

@@ -2,7 +2,7 @@
 
 @section('content')
 <br><br>
-@if(!is_null($uniforme))
+@if(!is_null($uniforme) && !is_null(Auth::user()))
 <div class="container">
     <div class="row">Edición de uniforme</div>
     <div class="row center-align">

@@ -8,6 +8,11 @@
         @if(Auth::user()->rol == "administrador" || Auth::user()->rol == "privilegio")
         <div class="row">
             <div class="col s12 ">
+                <a href="/Ventas" class="waves-effect waves-light btn">Ventas</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 ">
                 <a href="/Cotizar" class="waves-effect waves-light btn">Cotizar</a>
             </div>
         </div>
@@ -43,13 +48,16 @@
                             <a href="/Uniforme/{{$u->idUniforme}}">
                                 <img class="imagen" src="{{ asset('/storage/uniformes/'.$u->foto) }}" alt="">
                             </a>
+                            @foreach($u->getEscuela($u->idUniforme) as $e)
+                            @endforeach
+                            <p>{{$e->nombre}} - {{$e->grado}} - {{$u->genero}}</p>
                         </div>
                     </div>
                     @endforeach
                     </div>
                 @else
                     <h2 class="center-align">No se encontraron uniformes</h2>
-                    @if(Auth::user() != null)
+                    @if(Auth::user()->rol == "administrador")
                     <h2 class="center-align"><a href="/registro/Uniforme">Registrar uniforme</a></h2>
                     @endif  
                 @endif
@@ -65,7 +73,8 @@
                             <a href="/Equipamiento/{{$e->idEquipamiento}}">
                                 <img class="imagen" src="{{ asset('/storage/equipamiento/'.$e->foto) }}" alt="{{ asset('/storage/logo.jpg') }}">
                             </a>
-                        </div>
+                            <p>{{$e->nombre}}</p>
+                        </div>  
                     </div>
                 @endforeach
                 </div>
@@ -78,6 +87,5 @@
 
 @else
 <meta http-equiv="refresh" content="0; URL=/loginLU" />
-
 @endif
 @endsection

@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class VentaUniformeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
@@ -39,6 +34,7 @@ class VentaUniformeController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         $venta = new VentaUniforme();        
+        //dd($request);   
         $venta->idVentaTalla = $request->idTallaVenta;
         $venta->idVentaUniforme = $request->idVentaUniforme;
         $venta->dia = Carbon::now()->format('Y-m-d');

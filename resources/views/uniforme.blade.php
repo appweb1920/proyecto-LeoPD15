@@ -1,6 +1,7 @@
 @extends ('layouts.principal')
 
 @section('content')
+@if(!is_null(Auth::user()))
 <div class="container">
     <div class="row">
         <div class="col s12">
@@ -63,9 +64,9 @@
                                 document.getElementById('precio').value = precio;
                             }
                             function verificaVenta(){
-                                var v = Number(document.getElementById('vendido').value);
-                                var d = Number(document.getElementById('disponible').value);
-                                if(d < v ){
+                                var v = Number(document.getElementById('vendido').value); //Obtener la cantidad a vender
+                                var d = Number(document.getElementById('disponible').value); //Obtener la cantidad disponible
+                                if(d < v ){//Comparar y revisar si hay disponibilidad suficiente
                                     alert("No hay disponibilidad suficiente!");
                                     return false;
                                 }
@@ -83,8 +84,8 @@
                                     <input type="hidden" name="idVentaUniforme" id="idVentaUniforme" value="{{$uniforme->idUniforme}}">
                                     <input type="hidden" name="tallaVenta" id="tallaVenta" class="validate">
                                     @foreach($uniforme->getEscuela($uniforme->idUniforme) as $escuela)
-                                    <input type="hidden" name="escuela" id="escuela" class="validate" value="{{$escuela->nombre}}-{{$escuela->grado}}-{{$uniforme->genero}}">
                                     @endforeach 
+                                    <input type="hidden" name="escuela" id="escuela" class="validate" value="{{$escuela->nombre}}-{{$escuela->grado}}-{{$uniforme->genero}}">
                                     <div class="row" >
                                         <div class="input-field col s8">
                                             <input type="number" name="vendido" id="vendido" min="0" class="validate">
@@ -139,5 +140,10 @@
 <br>
 <br>
 <br>
+@else
+<meta http-equiv="refresh" content="0; URL=/loginLU"/>
+
+@endif
+
 
 @endsection

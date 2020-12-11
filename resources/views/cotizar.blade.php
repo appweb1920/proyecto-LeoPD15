@@ -1,7 +1,9 @@
 @extends("layouts.principal")
 
 @section("content")
+@if(!is_null(Auth::user()))
 <br><br>
+
 <div class="container">
     <div class="row">
         <div class="col s12">
@@ -16,6 +18,7 @@
                     <div class="Productos">
                     <br>
                     <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+                    <h5>-Agrega los productos-</h5>
                     <form action="" class="formProducto" target="dummyframe">
                         <div class="row">
                             <div class="col s8">
@@ -101,15 +104,15 @@
             <div class="row">
                 <div class="col s9">
                     <form action="">
-                        <div class="col s4">
+                        <div class="col s5">
                             <input type="text" name="subtotal" id="subtotal" value="0" disabled>
                             <label for="subtotal">Subtotal</label>
                         </div>
-                        <div class="col s4">
+                        <div class="col s5">
                             <input type="text" name="iva" id="iva" value="0" disabled>
                             <label for="iva">IVA 16%</label>
                         </div>
-                        <div class="col s4">
+                        <div class="col s5">
                             <input type="text" name="total" id="total" value="0" disabled> 
                             <label for="total">Total</label>
                         </div>
@@ -157,5 +160,8 @@
             </script>
         </div>
     </div>
-
+</div>
+@else
+<meta http-equiv="refresh" content="0; URL=/loginLU"/>
+@endif
 @endsection
