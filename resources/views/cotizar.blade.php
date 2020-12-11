@@ -62,35 +62,7 @@
                     </div>
                 </div>
                     <script type="text/javascript">
-                        function calcula(){
-                            /*var iva = 0,subt = 0,total = 0;
-                            //Div que contiene la parte de los productos
-                            var prods = document.getElementsByClassName("prods");
-                            var cant = 0;
-                            var precioU = 0;
-                            for(var i = 0 ; i < prods.length; i++){
-                                cant = prods[i].children[0].children[0].value;
-                                precioU = prods[i].children[1].children[0].value;
-                                subt +=  (cant * precioU); 
-                                iva += (subt * 16)/100;
-                                total += subt + iva;
-                            }
-                            document.getElementById("iva").value = iva;
-                            document.getElementById("subtotal").value = subt;
-                            document.getElementById("total").value = total;
-                            */
-                            var t = document.getElementById("tablaProductos").getElementsByTagName('tbody')[0];
-
-                            alert(t.row[0].cols[2].innerHTML);
-                        }
-                        /*function agregaProducto(){
-                            
-                            
-                            var e=document.getElementsByClassName("ProductosContenedor")[0];
-                            var f = document.getElementsByClassName("Productos")[0].innerHTML;
-                            e.innerHTML += f;
-                        }*/
-                        function agregaTabla(){
+                    function agregaTabla(){
                             var e = document.getElementById('Equipamiento');
                             var prodN = e.options[e.selectedIndex].dataset.nombre;
                             var prodP = e.options[e.selectedIndex].dataset.precio;
@@ -104,11 +76,20 @@
                             var cell3 = row.insertCell(2);
                             var cell4 = row.insertCell(3);
                             var cell5 = row.insertCell(4);
+                            var cell6 = row.insertCell(5);
                             cell1.innerHTML = prodN;
                             cell2.innerHTML = prodD;
                             cell3.innerHTML = prodP;
                             cell4.innerHTML = prodC;
                             cell5.innerHTML = prodT;
+                            cell6.innerHTML = "<a href='javascript:;' onclick='eliminaRow(this.parentNode)'> Eliminar </a>";
+                        }
+                        
+
+                        function eliminaRow(e){
+                            var r = e.parentNode;
+                            var t = r.parentNode;
+                            t.deleteRow(r.rowIndex - 1);
                         }
                     </script>
                 </div>
@@ -152,12 +133,40 @@
                         <th>Precio</th>
                         <th>Cantidad</th>
                         <th>Total</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="productosSum">
-                    
                 </tbody>
             </table>
+            <script type="text/javascript">
+                function calcula(){
+                    var iva = 0,subt = 0,total = 0;/*
+                    //Div que contiene la parte de los productos
+                    var prods = document.getElementsByClassName("prods");
+                    var cant = 0;
+                    var precioU = 0;
+                    for(var i = 0 ; i < prods.length; i++){
+                        cant = prods[i].children[0].children[0].value;
+                        precioU = prods[i].children[1].children[0].value;
+                        subt +=  (cant * precioU); 
+                        iva += (subt * 16)/100;
+                        total += subt + iva;
+                    }
+                    
+                    */
+                    var t = document.getElementById("tablaProductos").getElementsByTagName('tbody')[0];
+                    for(var i = 0 ; i < t.rows.length ; i++){
+                        subt += Number(t.rows[i].getElementsByTagName('td')[4].innerHTML);
+                    }
+                    iva = (subt*16)/100;
+                    total = subt + iva;
+                    document.getElementById("iva").value = iva;
+                    document.getElementById("subtotal").value = subt;
+                    document.getElementById("total").value = total;
+                }
+            </script>
+
         </div>
     </div>
     

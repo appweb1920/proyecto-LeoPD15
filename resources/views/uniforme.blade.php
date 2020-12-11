@@ -18,17 +18,13 @@
                 </div>
                 <div class="col s7 offset-s1">
                     <div class="col s5" >
-                        <div class="row"> <?php $arrayCant = array(); $arrayCostos = array(); ?>
+                        <div class="row">
                                 @if(!is_null($tallas))
                                 <div class="input-field col s12">
                                     <select name="idTalla" id="idTalla" onchange="actualiza()">
                                             <option value="" disabled selected>Elige una talla</option>
                                         @foreach($tallas as $t)
-                                            <option value="{{$t->idTalla}}">{{$t->talla}}</option>
-                                            <?php 
-                                                array_push($arrayCant, $t->cantidad); 
-                                                array_push($arrayCostos, $t->precio); 
-                                            ?>
+                                            <option value="{{$t->idTalla}}" data-cantidad="{{$t->cantidad}}" data-precio="{{$t->precio}}">{{$t->talla}}</option>
                                         @endforeach
                                     </select>
                                     <label>Talla</label>
@@ -53,15 +49,18 @@
                                 var idTalla = e.options[e.selectedIndex].value;
                                 //Obtener el valor en numero de la talla seleccionada
                                 var talla = e.options[e.selectedIndex].text;
-                                //Cambiar el valor del idTalla para registrarlo en la venta
+                                //Cambiar el valor del idTalla para registrarlo en la venta una vez pasada al controlador
                                 var idtallaVenta = document.getElementById('idTallaVenta');
                                 var tallaVenta = document.getElementById('tallaVenta');
                                 //Actualizar los campos para el registro de la venta
                                 idtallaVenta.value = idTalla;tallaVenta.value = talla;
-                                let arrCant = [<?php echo '"'.implode('","', $arrayCant).'"' ?>];
-                                let arrCostos = [<?php echo '"'.implode('","', $arrayCostos).'"' ?>];
-                                document.getElementById('disponible').value = arrCant[idTalla - 1];
-                                document.getElementById('precio').value = arrCostos[idTalla - 1];
+                                //Obtener la disponibilidad de la talla elegida
+                                var disp = e.options[e.selectedIndex].dataset.cantidad;
+                                //Obtener el precio de la talla elegida
+                                var precio = e.options[e.selectedIndex].dataset.precio;
+                                //Actualizar los campos con la información de la talla obtenida
+                                document.getElementById('disponible').value = disp;
+                                document.getElementById('precio').value = precio;
                             }
                             function verificaVenta(){
                                 var v = Number(document.getElementById('vendido').value);
