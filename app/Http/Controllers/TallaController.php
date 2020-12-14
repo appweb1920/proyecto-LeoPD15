@@ -88,8 +88,10 @@ class TallaController extends Controller
      * @param  \App\Talla  $talla
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Talla $talla)
+    public function destroy($id)
     {
-        //
+        $talla = Talla::find($id);
+        $talla->delete();
+        return redirect('/uniforme/tallas/'.$id);
     }
 }

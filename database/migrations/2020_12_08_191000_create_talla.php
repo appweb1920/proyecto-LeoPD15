@@ -23,6 +23,13 @@ class CreateTalla extends Migration
             $table->timestamps();
             $table->foreign('idTallaUniforme')->references('idUniforme')->on('Uniforme')->onDelete('cascade');
         });
+
+        DB::table('talla')->insert([
+            'idTallaUniforme' => '1',
+            'talla' => '14',
+            'cantidad' => '30',
+            'precio' => '450'
+        ]);
     }
 
     public function down()

@@ -43,6 +43,7 @@ Route::get('/Escuelas/elimina/{id}', 'EscuelaController@destroy');
 Route::get('/Uniforme/elimina/{id}', 'UniformeController@destroy');
 Route::get('/Equipamiento/elimina/{id}', 'EquipamientoController@destroy');
 Route::get('/Uniforme/elimina/{id}', 'UniformeController@destroy');
+Route::get('/talla/Eliminar/{id}', 'TallaController@destroy');
 
 //Mostrar elemento especifico
 Route::get('/uniforme/tallas/{id}', 'TallaController@show');

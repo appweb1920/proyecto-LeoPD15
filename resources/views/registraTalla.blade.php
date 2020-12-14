@@ -36,13 +36,6 @@
                     @else
                         @foreach($tallas as $t)
                             <div class="row">
-                                <!--
-                                <ul class="collection">
-                                    <li class="collection-item">Talla: {{$t->talla}}</li>
-                                    <li class="collection-item">Precio: {{$t->precio}}</li>
-                                    <li class="collection-item">Disponible: {{$t->cantidad}}</li>
-                                </ul>
-                                -->
                                 <h5>Talla: {{$t->talla}}</h5>
                                 <form action="/Talla/editar" method="POST">
                                 @csrf
@@ -53,6 +46,7 @@
                                 <input type="text" name="cantidad" id="cantidad" value="{{$t->cantidad}}">
                                 <button type="submit" class="btn waves-effect">Modificar</button>
                                 </form>
+                                <a href="/talla/Eliminar/{{$t->idTalla}}"> <button class="btn waves-effect">Eliminar talla</button> </a>
                             </div>
                         @endforeach
                     @endif
