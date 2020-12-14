@@ -77,7 +77,6 @@
                                 <th>{{$v->dia}}</th>
                                 <th>{{$v->talla}}</th>
                                 <th>{{$v->vendido}}</th>
-                                <?php echo $equipamiento->cantidad ?>
                             </tr>
                         @endforeach
                     </tbody>

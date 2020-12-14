@@ -15,6 +15,11 @@ class CreateEscuela extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('escuela')->insert([
+            'nombre' => 'China',
+            'grado' => 'Secundaria'
+        ]);
     }
     public function down()
     {

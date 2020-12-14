@@ -23,6 +23,14 @@ class CreateEquipamiento extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('equipamiento')->insert([
+            'nombre' => 'Chaleco de seguridad',
+            'foto' => '1.jpg',
+            'precio' => '550',
+            'cantidad' => '20',
+            'talla' => 'G'
+        ]);
     }
 
     /**

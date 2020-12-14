@@ -15,14 +15,21 @@ class CreateUniforme extends Migration
     {
         Schema::create('uniforme', function (Blueprint $table) {
             $table->bigIncrements('idUniforme');
-            $table->unsignedBigInteger('idEscuelaUniforme');
+            $table->unsignedBigInteger('idEscuelaUniforme')->nullable();
             $table->string('foto')->default('logo.jpg');
             $table->string('genero');
             $table->string('tipo');
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('idEscuelaUniforme')->references('idEscuela')->on('Escuela');
+            $table->foreign('idEscuelaUniforme')->references('idEscuela')->on('Escuela')->onDelete('set null');
         });
+
+        DB::table('uniforme')->insert([
+            'idEscuelaUniforme' => '1',
+            'foto' => '1.jpg',
+            'genero' => 'niña',
+            'tipo' => 'diario'
+        ]);
         
     }
     /**
