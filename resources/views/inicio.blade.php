@@ -4,13 +4,13 @@
 <div class="row">
 @if(!is_null(Auth::user()))
     <div class="col s2" >
-        
-        @if(Auth::user()->rol == "administrador" || Auth::user()->rol == "privilegio")
         <div class="row">
             <div class="col s12 ">
                 <a href="/Ventas" class="waves-effect waves-light btn">Ventas</a>
             </div>
         </div>
+        @if(Auth::user()->rol == "administrador" || Auth::user()->rol == "privilegio")
+        
         <div class="row">
             <div class="col s12 ">
                 <a href="/Cotizar" class="waves-effect waves-light btn">Cotizar</a>

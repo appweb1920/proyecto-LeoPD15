@@ -14,7 +14,9 @@
                     <div class="row center-align"><h5>{{$equipamiento->nombre}}</h5>
                     <img class="imagen" src="{{ asset('/storage/equipamiento/'.$equipamiento->foto) }}" alt="{{ asset('/storage/logo.jpg') }}"></div>
                     <div class="row">
+                    @if(Auth::user()->rol=="administrador")
                         <div class="col s2"> <a href="/Equipamiento/elimina/{{$equipamiento->idEquipamiento}}" onclick="return Revisa()" style="color:red">Eliminar</a></div>
+                    @endif   
                         <br><div class="col s2"> <a href="/Equipamiento/editar/{{$equipamiento->idEquipamiento}}">Editar</a> </div>
                     </div>
                 </div>

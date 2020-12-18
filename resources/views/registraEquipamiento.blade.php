@@ -1,10 +1,10 @@
 @extends('layouts.principal')
 
 @section('content')
-@if(!is_null(Auth:user()))
+@if(!is_null(Auth::user()))
 <div class="container">
 
-    <h1 class="center-align">Registro de uniforme</h1><br><br>
+    <h1 class="center-align">Registro de equipamiento</h1><br><br>
         <div class="row">
             <div class="col s10 offset-s2">
                 <form action="/Equipamiento/guardar" method="POST" enctype="multipart/form-data">

@@ -14,7 +14,9 @@
                     <div class="row">
                         <div class="col s2 offset-s5"><a href="/uniforme/tallas/{{$uniforme->idUniforme}}"><h5>Tallas</h5></a></div>
                         <div class="col s2 offset-s5"><a href="/Uniforme/editar/{{$uniforme->idUniforme}}"><h5>Editar</h5></a></div>
+                        @if(Auth::user()->rol == "administrador")
                         <div class="col s2 offset-s5"><a href="/Uniforme/Eliminar/{{$uniforme->idUniforme}}" onclick="return Revisa()" style="color:red"><h5>Eliminar</h5></a></div>
+                        @endif
                     </div>
                 </div>
                 <div class="col s7 offset-s1">
